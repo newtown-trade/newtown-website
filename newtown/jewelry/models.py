@@ -6,3 +6,6 @@ class Jewelry(models.Model):
 	metal = models.CharField(max_length=50)
 	price = models.DecimalField(max_digits=6,decimal_places=2)
 	#to add image later
+
+	def __str__(self):
+		output = self.metal + ' ' + self.jewelry_type + ', ' + str(self.metal)
