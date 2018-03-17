@@ -1,0 +1,26 @@
+v0.1:
+-django project init, dev server doesn't crash on start
+-basic level implementation of JEWELRY model
+-implementation of django admin interface
+-basic list-type html output with test rows (go directly to page)
+
+v0.2:
+-add image column to model
+-create organized image filesystem
+-create "homepage" and add link to jewelry
+-dev image serving
+-label DEV-SPECIFIC settings.py attributes for later migration to separate dev.py file
+
+v0.3:
+-create separate settings.py file for DEV
+-use environment variables to distinctuate between DEV and PROD setting.py files
+-update readme with implementation instructions up to this point
+
+v0.4:
+-basic level implementation of JEWELRY MODEL (NO M2M WITH JEWLERY YET)
+-list-type html output with test rows for jewelry
+-add link from homepage to jewelry too
+
+v0.5:
+[M2M][TBD]
+ 
