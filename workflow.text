@@ -1,5 +1,5 @@
 v0.1:
--django project init, dev server doesn't crash on start
+-django project init, dev server doesn't crash on start[DONE]
 -basic level implementation of JEWELRY model
 -implementation of django admin interface
 -basic list-type html output with test rows (go directly to page)
