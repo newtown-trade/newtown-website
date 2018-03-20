@@ -1,4 +1,4 @@
-v0.1:
+v0.1:[DONE]
 -django project init, dev server doesn't crash on start[DONE]
 -basic level implementation of JEWELRY model[DONE]
 -implementation of django admin interface[DONE]
