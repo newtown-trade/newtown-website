@@ -119,3 +119,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Imports Development or Production-specific settings from their corresponding separate files
+# WHEN IN DOUBT, ADD A NEW SETTING HERE
+import os
+if os.environ.get('DEV') is not None:
+	from .settings_dev import *
+else:
+	from .settings_production import *
+
