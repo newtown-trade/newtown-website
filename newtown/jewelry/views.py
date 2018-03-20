@@ -4,7 +4,6 @@ from .models import *
 #need to write generic view for specific metals and for specific materials
 def index(request):
 	jewelry_items= Jewelry.objects.all()
-	print(len(jewelry_items))
 	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items})
 def gold(request):
 	jewelry_items = Jewelry.objects.filter(metal = 'Gold')
