@@ -1,7 +1,7 @@
-{% if all_jewelry %}
+{% if jewelry_items %}
 	<ul>
-		{% for jewelry in all_jewelry %}
-			<li>{{jewelry}}</li>
+		{% for jewelry in jewelry_items %}
+			<li>{{jewelry}} aaa</li>
 			<ul>
 				<li>Jewelry Type: {{jewelry.jewelry_type}}</li>
 				<li>Size: {{jewelry.size}} mm.</li>
