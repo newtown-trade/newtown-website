@@ -4,17 +4,18 @@ v0.1:[DONE]
 -implementation of django admin interface[DONE]
 -basic list-type html output with test rows (go directly to page)[DONE]
 
-v0.2:
+v0.2:[DONE, BUT WON'T CREATE TAG]
 -create duple options for metals[DONE]
--temporary harcoded methods for metal-specific items, with links from 'homepage'[PARTIALLY DONE]
+-temporary harcoded methods for metal-specific items, with links from 'homepage'[SCRAPPED]
 -create separate settings.py file for DEV[DONE]
 -use environment variables to distinctuate between DEV and PROD setting.py files[DONE]
 -update readme with implementation instructions up to this point[DONE]
+-grab database bounds in preparation for form implementation[DONE]
 
 v0.3:
--basic level implementation of JEWELRY MODEL (NO M2M WITH JEWLERY YET)
--list-type html output with test rows for jewelry
--add link from homepage to jewelry too
+-design metal-specific frontend, and design form requirements
+-link jewelry subhome page with metal-specific frontend
+-create Display model
  
 v0.4:
 -add image column to model
@@ -24,7 +25,6 @@ v0.4:
 -label DEV-SPECIFIC settings.py attributes for later migration to separate dev.py file
 
 v0.5
--using those, generate goto links in index of jewelry that automatically query databases
-	-i.e. you hsouldn't have a specific "gold" querying method
-	-pipe user choice into generic viewer
+-generalize website frontend for jewelry display
+-generalize both form AND frontend
 
