@@ -1,6 +1,6 @@
 from django.db import models
 
-class Jewelry(models.Model):
+class Metal(models.Model):
 	GOLD = 'Gold'
 	SILVER = 'Silver'
 	BRONZE = 'Bronze'

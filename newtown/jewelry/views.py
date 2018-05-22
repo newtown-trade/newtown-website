@@ -5,6 +5,7 @@ from .models import *
 def index(request):
 	jewelry_items= Jewelry.objects.all()
 	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items})
+'''
 def gold(request):
 	jewelry_items = Jewelry.objects.filter(metal = 'Gold')
 	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items})
@@ -17,3 +18,4 @@ def bronze(request):
 def steel(request):
 	jewelry_items = Jewelry.objects.filter(metal = 'Steel')
 	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items})
+'''
