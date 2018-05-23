@@ -1,3 +1,20 @@
+{% comment %}
+MOVE HEADER TO GENERIC TEMPLATE
+MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
+{% endcomment %}
+
+<head>
+<title>test</title>
+
+<!-- algolia cdns -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/`npm/instantsearch.js@2.7.4/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4"></script>
+
+<!-- theme for algolia plugins -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">
+
+</head>
+
 {% if jewelry_items %}
 	<ul>
 		{% for jewelry in jewelry_items %}
