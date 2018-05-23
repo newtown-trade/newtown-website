@@ -1,2 +1,3 @@
 #ADD DEVELOPMENT-SPECIFICS SETTINGS HERE
-print('yay develop')
+#print('yay develop')
+DEBUG=True

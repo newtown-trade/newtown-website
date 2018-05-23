@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2u_9pi!2x2@3gn3t63f919s=r@vc-kwdctx1pel)25h3as3trv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG HAS BEEN OUTSOURCED TO DEVELOP/PRODUCTION-SPECIFIC FILES
 
 ALLOWED_HOSTS = []
 
@@ -38,7 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'jewelry.apps.JewelryConfig',
+	'algoliasearch_django',
 ]
+
+#settings for algolia search application
+#will need to re-enter keys as environment variables in production
+
+ALGOLIA={
+	'APPLICATION_ID':os.environ.get('ALGOLIAAPP'),
+	'API_KEY':os.environ.get('ALGOLIAAPI'),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,7 +131,6 @@ STATIC_URL = '/static/'
 
 # Imports Development or Production-specific settings from their corresponding separate files
 # WHEN IN DOUBT, ADD A NEW SETTING HERE
-import os
 if os.environ.get('DEV') is not None:
 	from .settings_dev import *
 else:
