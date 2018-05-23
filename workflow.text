@@ -13,7 +13,7 @@ v0.2:[DONE, BUT WON'T CREATE TAG]
 -grab database bounds in preparation for form implementation[DONE]
 
 v0.3:
--design metal-specific frontend, and design form requirements
+-design proof-of-concept test frontend for metals using Algolia. (CSS details will be integrated into Django later)[PARTIALLY DONE]
 -link jewelry subhome page with metal-specific frontend
 -create Display model
  
@@ -25,6 +25,5 @@ v0.4:
 -label DEV-SPECIFIC settings.py attributes for later migration to separate dev.py file
 
 v0.5
--generalize website frontend for jewelry display
--generalize both form AND frontend
-
+-generalize metals frontend to work with any jewelry
+-implement Django Template system with Algolia
