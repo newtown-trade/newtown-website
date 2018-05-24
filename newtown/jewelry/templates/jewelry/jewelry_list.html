@@ -62,8 +62,10 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			container:'#hits',
 			templates:{
 				empty:'no results',
+				//PROBLEM: actual entries don't completely show up and result of __str__ not searchable
+				{% verbatim %}
 				item:'<em>Hit {{objectID}}</em>: {{{_highlightResult.name.value}}}'	 //highlightResult underscores relevant section in searches
-				//PROBLEM: Mustache template system for Algolia conflicts with Django's template system
+				{% endverbatim %}
 			}	
 		})
 	);
