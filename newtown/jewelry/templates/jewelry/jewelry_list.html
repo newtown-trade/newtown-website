@@ -26,7 +26,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	{% if jewelry_items %}
 		<ul>
 			{% for jewelry in jewelry_items %}
-				<li>{{jewelry}} aaa</li>
+				<li>{{jewelry}}</li>
 				<ul>
 					<li>Jewelry Type: {{jewelry.jewelry_type}}</li>
 					<li>Size: {{jewelry.size}} mm.</li>
@@ -62,9 +62,9 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			container:'#hits',
 			templates:{
 				empty:'no results',
-				//PROBLEM: actual entries don't completely show up and result of __str__ not searchable
+				//PROBLEM: size and price are not searchable
 				{% verbatim %}
-				item:'<em>Hit {{objectID}}</em>: {{{_highlightResult.name.value}}}'	 //highlightResult underscores relevant section in searches
+				item:'<em>Hit {{objectID}}</em>: {{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm.'
 				{% endverbatim %}
 			}	
 		})
