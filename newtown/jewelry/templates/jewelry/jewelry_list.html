@@ -20,9 +20,14 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		<!-- SearchBox widget will appear here -->
 	</div>
 
+	<div id = "refinement-list">
+		<!-- refinement list widget will appear here-->
+	</div>
+
 	<div id="hits">
 	  <!-- Hits widget will appear here -->
 	</div>
+
 	{% if jewelry_items %}
 		<ul>
 			{% for jewelry in jewelry_items %}
@@ -45,6 +50,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		appId: 'SCHJVEFMZ6',
 		apiKey: '5eb2a2d465e0a2d9be23ead26762c22d',
 		indexName: 'Metal', 
+		facets:['metal'],//check they're registered in index.py 
 		urlSync: true
 	});
 
@@ -53,6 +59,19 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		instantsearch.widgets.searchBox({
 			container:'#search-box',
 			placeholder:'Search for Results'	
+		})
+	);
+
+	//PROBLEM: widget doesn't actuallyregister metals
+	// initialize RefinementList
+	search.addWidget(
+		instantsearch.widgets.refinementList({
+			container: '#refinement-list',
+			operator:'or',
+			attributeName: 'metal',
+			templates:{
+				header:'Types of Metals',	
+			}
 		})
 	);
 
