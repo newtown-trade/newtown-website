@@ -11,6 +11,8 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4"></script>
 
+	<!-- basic instantsearch styling, probably might be overridden with Bootstrap + custom -->
+
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">
 </head>
 
@@ -40,19 +42,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	  <!-- Hits widget will appear here -->
 	</div>
 
-	{% if jewelry_items %}
-		<ul>
-			{% for jewelry in jewelry_items %}
-				<li>{{jewelry}}</li>
-				<ul>
-					<li>Jewelry Type: {{jewelry.jewelry_type}}</li>
-					<li>Size: {{jewelry.size}} mm.</li>
-					<li>Metal: {{jewelry.metal}}</li>
-					<li>Price: ${{jewelry.price}}</li>
-				</ul>
-			{% endfor %}
-		</ul>
-	{% endif %}
 </body>
 
 <script>
@@ -74,7 +63,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})
 	);
 
-	// initialize RefinementList
+	//initialize RefinementList
 	//attributeName needs to be abstracted later
 	search.addWidget(
 		instantsearch.widgets.refinementList({
