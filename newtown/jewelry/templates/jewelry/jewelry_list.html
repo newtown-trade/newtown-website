@@ -15,7 +15,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 </head>
 
 <body>
-
+	<!-- TODO: search refinement widget IDs should be standardized to match the model field they're paired with -->
 	<div id="search-box">
 		<!-- SearchBox widget will appear here -->
 	</div>
@@ -26,6 +26,10 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 
 	<div id = "jewelry-types">
 		<!-- refimenet list widget FOR JEWELRY TYPES will appear here -->
+	</div>
+
+	<div id = "price">
+		<!-- priceRange results appear here-->
 	</div>
 
 	<div id="hits">
@@ -89,6 +93,22 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			templates:{
 				header:'Type of Jewelry',	
 			}	
+		})
+	);
+
+	//widget for price
+	search.addWidget(
+		instantsearch.widgets.priceRanges({
+			container:'#price',
+			attributeName:'price',	
+			labels:{
+				currency:'$',
+				seperator:'to',
+				button:'Go',	
+			},
+			templates:{
+				header:'Price'	
+			}
 		})
 	);
 

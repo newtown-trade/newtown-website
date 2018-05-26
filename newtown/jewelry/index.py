@@ -4,4 +4,4 @@
 from algoliasearch_django import AlgoliaIndex
 
 class MetalIndex(AlgoliaIndex):
-	settings={'attributesForFaceting':['metal','jewelry_type']}
+	settings={'attributesForFaceting':['metal','jewelry_type','price']}
