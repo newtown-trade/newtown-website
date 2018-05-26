@@ -32,6 +32,10 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		<!-- priceRange results appear here-->
 	</div>
 
+	<div id = "size">
+		<!-- size options go here -->
+	</div>
+
 	<div id="hits">
 	  <!-- Hits widget will appear here -->
 	</div>
@@ -54,11 +58,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 <script>
 	//indexName will need to be abstracted to the desired model in Jewelry once this template is generalized
 	//initializes search engine in JavaScript
+	//facetnames are defined in apps.py
 	const search = instantsearch({
 		appId: 'SCHJVEFMZ6',
 		apiKey: '5eb2a2d465e0a2d9be23ead26762c22d',
 		indexName: 'Metal', 
-		facets:['metal','jewelry_type'],//check they're registered in index.py 
 		urlSync: true
 	});
 
@@ -112,6 +116,21 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})
 	);
 
+	//widget for size
+	search.addWidget(
+		instantsearch.widgets.rangeInput({
+			container:'#size',
+			attributeName:'size',
+			templates:{
+				header:'Size (mm.)',	
+			},	
+			labels:{
+				separator:'to',
+				button:'Go',	
+			}
+		})
+	);
+
 	//sets up widget to display search results
 	search.addWidget(
 		instantsearch.widgets.hits({
@@ -126,6 +145,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})
 	);
 
-
+	//self-explanatory
 	search.start();
 </script>
