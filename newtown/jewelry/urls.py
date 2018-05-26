@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 
 from . import views
-
+app_name='jewelry'
 urlpatterns = [#need to write generic view for specific metals and for specific materials
 	url(r'^$',views.index,name='index'),
 	url(r'^metal/$',views.metals,name='metals'),

@@ -4,7 +4,7 @@ from django.db.models import Max, Min
 from .models import *
 #need to write generic view for specific metals and for specific materials
 def index(request):
-	return HttpResponse("to be added later")
+	return render(request,'jewelry/jewelry_root.html',{})
 def metals(request):
 	metal_choices = Metal.METAL_CHOICES
 	jewelry_items= Metal.objects.all()
