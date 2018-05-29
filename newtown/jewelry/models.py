@@ -27,3 +27,8 @@ class Metal(models.Model):
 	def save(self, *args, **kwargs):
 		self.jewelry_type = self.jewelry_type.title()
 		super(Metal,self).save(*args,**kwargs)
+
+#class for jewelry display
+#need: length, width, total 
+class Display(models.Model):
+	
