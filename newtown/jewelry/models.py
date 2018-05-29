@@ -31,4 +31,7 @@ class Metal(models.Model):
 #class for jewelry display
 #need: length, width, total 
 class Display(models.Model):
-	
+	jewelryset = models.ManyToManyField(Metal,verbose_name="Jewelry in Display")
+	full_price = models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Price of Entire Display")
+	length=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Length of Board")
+	width=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Width of Board")
