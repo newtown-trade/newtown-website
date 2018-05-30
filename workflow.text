@@ -15,16 +15,28 @@ v0.2:[DONE, BUT WON'T CREATE TAG]
 v0.3:
 -design proof-of-concept test frontend for metals using Algolia. (CSS details will be integrated into Django later)[DONE]
 -link jewelry subhome page with metal-specific frontend[DONE]
--create Display model
+-create Display model[DONE]
  
 v0.4:
--add image column to model
+-add image column to Metal and implement on Algolia
 -create organized image filesystem
--create "homepage" and add link to jewelry
--dev image serving
--label DEV-SPECIFIC settings.py attributes for later migration to separate dev.py file
+-dev image serving configuration on django
+
+-link from homepage to jewelry and display, and check jewelry-> metals link
+-create specific pages for models linked via Algolia search
+-comb through settings.py for dev-specific stuff
+
+-create Contact Lenses class
+-implement algolia search for Display (do not create item-specific pages)
 
 v0.5
--create another jewelry type NOT metal (e.g. contact lenses)
+-make Metal Algolia frontend work with Contact lense
 -generalize metals frontend to work with any jewelry
--implement Django Template system with Algolia
+-implement Django Template system with Algolia in general
+
+-create homepage frontend
+-create jewelry homepage frontend
+-create flatpages (e.g. about us)
+-do not link with django yet
+
+-first release to dad
