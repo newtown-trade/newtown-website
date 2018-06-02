@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	'jewelry.apps.JewelryConfig',
 	'algoliasearch_django',
+	'django_cleanup', #deletes old images
 ]
 
 #settings for algolia search application
