@@ -18,9 +18,9 @@ v0.3:
 -create Display model[DONE]
  
 v0.4:
--add image column to Metal and implement on Algolia
--create organized image filesystem
--dev image serving configuration on django
+-add image column to Metal and implement on Algolia[DONE]
+-create organized image filesystem [DONE]
+-dev image serving configuration on django[DONE]
 
 -link from homepage to jewelry and display, and check jewelry-> metals link
 -create specific pages for models linked via Algolia search
