@@ -23,7 +23,7 @@ class Metal(models.Model):
 	size = models.IntegerField(default=0)#change to float later if necessary, expressed in millimetres
 	metal = models.CharField(max_length=50, choices=METAL_CHOICES,default=GOLD)
 	price = models.DecimalField(max_digits=6,decimal_places=2)
-	image = models.ImageField(upload_to=upload_metal,null=True)
+	image = models.ImageField(upload_to='metals/',null=True)
 
 	def __str__(self):
 		output = self.metal + ' ' + self.jewelry_type + ', ' + str(self.size) + ' mm.'
