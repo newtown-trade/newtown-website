@@ -22,9 +22,9 @@ v0.4:
 -create organized image filesystem
 -dev image serving configuration on django
 
--link from homepage to jewelry and display, and check jewelry-> metals link
--create specific pages for models linked via Algolia search
--comb through settings.py for dev-specific stuff
+-link from homepage to jewelry and display, and check jewelry-> metals link[DONE]
+-create specific pages for models linked via Algolia search[NEED TO MERGE IMAGE FIRST]
+-comb through settings.py for dev-specific stuff[DONE]
 
 -create Contact Lenses class
 -implement algolia search for Display (do not create item-specific pages)
