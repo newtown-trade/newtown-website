@@ -129,6 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+
 # Imports Development or Production-specific settings from their corresponding separate files
 # WHEN IN DOUBT, ADD A NEW SETTING HERE
 if os.environ.get('DEV') is not None:

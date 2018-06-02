@@ -2,6 +2,11 @@ from django.db import models
 
 #additional classes/fields will be implemented depending on production needs
 
+#returns dynamic folder structure for Metal
+#this produces a SuspiciousFileOperation that Django rejects
+def upload_metal(instance,filename):
+	return '/metals/%s/%s/' % (instance.metal, instance.jewelry_type)
+
 class Metal(models.Model):
 	GOLD = 'Gold'
 	SILVER = 'Silver'
@@ -18,7 +23,7 @@ class Metal(models.Model):
 	size = models.IntegerField(default=0)#change to float later if necessary, expressed in millimetres
 	metal = models.CharField(max_length=50, choices=METAL_CHOICES,default=GOLD)
 	price = models.DecimalField(max_digits=6,decimal_places=2)
-	#image = models.ImageField(upload_to="/media/")
+	image = models.ImageField(upload_to=upload_metal,null=True)
 
 	def __str__(self):
 		output = self.metal + ' ' + self.jewelry_type + ', ' + str(self.size) + ' mm.'
