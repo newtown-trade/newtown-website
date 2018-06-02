@@ -38,3 +38,10 @@ class Display(models.Model):
 	full_price = models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Price of Entire Display")
 	length=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Length of Board (mm.)")
 	width=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Width of Board (mm.)")
+
+#class for Contact Lenses
+#separated because totally different stats
+class ContactLense(models.Model):
+	color=models.CharField(max_length=50)
+	size=models.IntegerField(default=0)
+	price=models.DecimalField(max_digits=6,decimal_places=2)
