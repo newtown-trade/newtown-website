@@ -147,7 +147,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			templates:{
 				empty:'no results',
 				//PROBLEM: size and price are not searchable
-				item:{% verbatim %}'<em>Hit {{objectID}}</em>: {{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}">' {% endverbatim %}
+				item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{% url "jewelry:metal_specific" {{{ObjectID}}} %}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %} //need to address ObjectID problem
 			}	
 		})
 	);
