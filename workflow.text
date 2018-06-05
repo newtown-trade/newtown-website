@@ -26,8 +26,8 @@ v0.4:
 -create specific pages for models linked via Algolia search[NEED TO MERGE IMAGE FIRST]
 -comb through settings.py for dev-specific stuff[DONE]
 
--create Contact Lenses class
--implement algolia search for Display (do not create item-specific pages)
+-create Contact Lenses class[DONE,MOSTLY PUSHED TO 0.5]
+-implement algolia search for Display (do not create item-specific pages)[POSTPONED FOR 0.5]
 
 v0.5
 -make Metal Algolia frontend work with Contact lense
