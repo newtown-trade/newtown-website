@@ -12,6 +12,7 @@ def metals(request):
 	size_range = [jewelry_items.aggregate(Min('size')),jewelry_items.aggregate(Max('size'))]
 	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items})
 def metal_specific(request,metal_id):
+	print('ObjectID: ' + str(metal_id))
 	metal_jewelry = get_object_or_404(Metal,pk=metal_id)
 	return render(request,'jewelry/jewelry_specific.html',{metal_jewelry:'metal_jewelry'})
 '''
