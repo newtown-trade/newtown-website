@@ -139,11 +139,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})
 	);
 
-	function generate(objectID){
-		console.log(objectID)
-		return '<a href = "{% url 'jewelry:metal_specific' objectID %}"> link</a>'	
-	}
-
 	//sets up widget to display search results
 	//hackish solution to images: use {% get_media_prefix %} for MEDIA_ROOT and call {{image}}
 	search.addWidget(
@@ -152,8 +147,8 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			templates:{
 				empty:'no results',
 				//PROBLEM: size and price are not searchable
-				item:generate({% verbatim %}{{ObjectID}}{% endverbatim %})
-				{% comment %}//item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{% url "jewelry:metal_specific" {{ObjectID}} %}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %} //need to address ObjectID problem{% endcomment %}
+				//item:generate({% verbatim %}{{ObjectID}}{% endverbatim %})
+				item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{metal_url_specific}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %} //need to address ObjectID problem
 			}	
 		})
 	);

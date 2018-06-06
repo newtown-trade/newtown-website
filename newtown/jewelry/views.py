@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Max, Min
+from django.urls import reverse
 from .models import *
 #need to write generic view for specific metals and for specific materials
 def index(request):
@@ -10,7 +11,7 @@ def metals(request):
 	jewelry_items= Metal.objects.all()
 	price_range = [jewelry_items.aggregate(Min('price')),jewelry_items.aggregate(Max('price'))]
 	size_range = [jewelry_items.aggregate(Min('size')),jewelry_items.aggregate(Max('size'))]
-	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items})
+	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items,'metal_url_specific':reverse('jewelry:metal_specific',args=[1337]).replace('1337','{{objectID}}')}) #1337 is arbitrary
 def metal_specific(request,metal_id):
 	print('ObjectID: ' + str(metal_id))
 	metal_jewelry = get_object_or_404(Metal,pk=metal_id)
