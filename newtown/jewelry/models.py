@@ -19,10 +19,10 @@ class Metal(models.Model):
 		(BRONZE,'Bronze'),
 		(STEEL,'Steel'),	
 	)	
-	jewelry_type = models.CharField(max_length=50)
-	size = models.IntegerField(default=0)#change to float later if necessary, expressed in millimetres
-	metal = models.CharField(max_length=50, choices=METAL_CHOICES,default=GOLD)
-	price = models.DecimalField(max_digits=6,decimal_places=2)
+	jewelry_type = models.CharField(max_length=50,verbose_name="Type of Jewelry")
+	size = models.IntegerField(default=0,verbose_name="Size (mm.)")#change to float later if necessary, expressed in millimetres
+	metal = models.CharField(max_length=50, choices=METAL_CHOICES,default=GOLD,verbose_name="Type of Metals")
+	price = models.DecimalField(max_digits=6,decimal_places=2,verbose_name="Price")
 	image = models.ImageField(upload_to=upload_metal,null=True)
 
 	def __str__(self):
