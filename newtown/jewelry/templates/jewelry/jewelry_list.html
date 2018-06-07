@@ -37,13 +37,13 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 
 
 <script id = "hit-template">
-{% comment %}a template for all the hits. TODO: convert this into generic form when template is generalized {% endcomment %}
+{% comment %}a template for all the hits. the specific jewelry files will take it from here {% endcomment %}
 	<div class = "hit">
 		<div class = "hit-image">
 			<img src = "{% block hit_image %}{% endblock %}">
 		</div>	
 		<div class = "hit-content">
-			<h2>{% block hit_header %} {% endblock %}</h2>
+			<h2><a href = "{{specific_url}}">{% block hit_header %} {% endblock %}</a></h2>
 			{% block hit_details %}{% endblock %}
 		</div>
 	</div>
