@@ -69,6 +69,21 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 
 </body>
 
+
+<script id = "hit-template">
+{% comment %}a template for all the hits. TODO: convert this into generic form when template is generalized {% endcomment %}
+	<div class = "hit">
+		<div class = "hit-image">
+			<img src = "{% get_media_prefix%}{% verbatim%}{{image}}{% endverbatim %}">
+		</div>	
+		<div class = "hit-content">
+			<h2>{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}</h2>
+			<p>Size: {% verbatim %}{{size}} mm.{% endverbatim %}</p>
+			<p>Price: ${% verbatim %}{{price}}{% endverbatim %}</p>
+		</div>
+	</div>
+</script>
+
 <script>
 	//indexName will need to be abstracted to the desired model in Jewelry once this template is generalized
 	//initializes search engine in JavaScript
@@ -127,6 +142,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	}
 
 	//process and generates the proper parameters depending on field
+	//TODO: find better performance alternative
 	{% for field_name, values in attributes.items %}
 		switch ('{{ values.1 }}'){
 			case 'CharField':
@@ -220,7 +236,8 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			templates:{
 				empty:'no results',
 				//PROBLEM: size and price are not searchable
-				item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{specific_url}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %}
+				item:document.getElementById('hit-template').innerHTML
+				//item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{specific_url}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %}
 			}	
 		})
 	);

@@ -17,7 +17,6 @@ def generate_context(get_field_result,model_name,specific_method):
 			attributes[i.name]=[i.verbose_name,str(i.get_internal_type())]
 
 	#generates the item-specific urls
-	#TODO: fix new objectID bug
 	specific_url = reverse('jewelry:'+specific_method,args=[1337]).replace('1337','{{objectID}}')
 
 	#returns the context to be fed into the view
