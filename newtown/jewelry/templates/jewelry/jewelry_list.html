@@ -21,6 +21,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 <body>
 	<a href="{% url 'jewelry:index' %}">Back to Jewelry</a>
 	<!-- TODO: search refinement widget IDs should be standardized to match the model field they're paired with -->
+	{% for field_name,values in attributes.items %}
+		<div id = '{{field_name}}'></div>
+	{% endfor %}
+
+	<p>-----------------------------------</p>
 	<div id="search-box">
 		<!-- SearchBox widget will appear here -->
 	</div>
@@ -97,7 +102,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 					button:'Go',	
 				},
 				templates:{
-					header:verbvose_name	
+					header:verbose_name	
 				}
 			})
 		);	
@@ -118,6 +123,20 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			})
 		);	
 	}
+
+	{% for field_name, values in attributes.items %}
+		switch ('{{ values.1 }}'){
+			case 'CharField':
+				newRefinementList('{{field_name}}','{{values.0}}');
+				break;
+			case 'Integerfield':
+				newRangeInput('{{field_name}}','{{values.0}}');
+				break;
+			case 'DecimalField':
+				newPriceList('{{field_name}}','{{values.0}}');
+				break;
+		}
+	{% endfor %}	
 
 	//initializes search box itself
 	search.addWidget(
@@ -192,7 +211,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			templates:{
 				empty:'no results',
 				//PROBLEM: size and price are not searchable
-				//item:generate({% verbatim %}{{ObjectID}}{% endverbatim %})
 				item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{metal_url_specific}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %} //need to address ObjectID problem
 			}	
 		})

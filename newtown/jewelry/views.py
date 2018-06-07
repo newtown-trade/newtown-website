@@ -25,7 +25,7 @@ def metals(request):
 	metal_specific_url=reverse('jewelry:metal_specific',args=[1337]).replace('1337','{{objectID}}') #1337 is arbitrary
 	model_name="Metal"
 
-	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items,'metal_url_specific':metal_specific_url,'model_name':model_name}) 
+	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items,'metal_url_specific':metal_specific_url,'model_name':model_name,'attributes':attributes}) 
 def metal_specific(request,metal_id):
 	metal_jewelry = get_object_or_404(Metal,pk=metal_id)
 	return render(request,'jewelry/jewelry_specific.html',{metal_jewelry:'metal_jewelry'})
