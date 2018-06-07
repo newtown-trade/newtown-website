@@ -20,57 +20,59 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 
 <body>
 	<a href="{% url 'jewelry:index' %}">Back to Jewelry</a>
-	<!-- TODO: search refinement widget IDs should be standardized to match the model field they're paired with -->
+
+	{%comment %}generates the required divs for algolia to function {% endcomment %}
 	{% for field_name,values in attributes.items %}
 		<div id = '{{field_name}}'></div>
 	{% endfor %}
 
-	<p>-----------------------------------</p>
 	<div id="search-box">
 		<!-- SearchBox widget will appear here -->
-	</div>
-
-	<div id = "refinement-list">
-		<!-- refinement list widget FOR METALS will appear here-->
-	</div>
-
-	<div id = "jewelry-types">
-		<!-- refimenet list widget FOR JEWELRY TYPES will appear here -->
-	</div>
-
-	<div id = "price">
-		<!-- priceRange results appear here-->
-	</div>
-
-	<div id = "size">
-		<!-- size options go here -->
 	</div>
 
 	<div id="hits">
 	  <!-- Hits widget will appear here -->
 	</div>
 
-	{% if jewelry_items %}
-		<ul>
-			{% for jewelry in jewelry_items %}
-				<li>{{jewelry}}</li>
-				<ul>
-					<li>Jewelry Type: {{jewelry.jewelry_type}}</li>
-					<li>Size: {{jewelry.size}} mm.</li>
-					<li>Metal: {{jewelry.metal}}</li>
-					<li>Price: ${{jewelry.price}}</li>
-					<li>Image:<img src="{{jewelry.image.url}}"></li>
-				</ul>
-			{% endfor %}
-		</ul>
-	{% endif %}
+	{% comment %}//old legacy code kept around in case things break
+		<div id = "refinement-list">
+			<!-- refinement list widget FOR METALS will appear here-->
+		</div>
+
+		<div id = "jewelry-types">
+			<!-- refimenet list widget FOR JEWELRY TYPES will appear here -->
+		</div>
+
+		<div id = "price">
+			<!-- priceRange results appear here-->
+		</div>
+
+		<div id = "size">
+			<!-- size options go here -->
+		</div>
+
+		{% if jewelry_items %}
+			<ul>
+				{% for jewelry in jewelry_items %}
+					<li>{{jewelry}}</li>
+					<ul>
+						<li>Jewelry Type: {{jewelry.jewelry_type}}</li>
+						<li>Size: {{jewelry.size}} mm.</li>
+						<li>Metal: {{jewelry.metal}}</li>
+						<li>Price: ${{jewelry.price}}</li>
+						<li>Image:<img src="{{jewelry.image.url}}"></li>
+					</ul>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endcomment %}
 
 </body>
 
 <script>
 	//indexName will need to be abstracted to the desired model in Jewelry once this template is generalized
 	//initializes search engine in JavaScript
-	//facetnames are defined in apps.py
+	//facetnames are defined in apps.py,ALWAYS CHECK THERE IF ALGOLIA NOT WORKING
 	const search = instantsearch({
 		appId: 'SCHJVEFMZ6',
 		apiKey: '5eb2a2d465e0a2d9be23ead26762c22d',
@@ -91,7 +93,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		);	
 	}
 
-	function newPriceList(field_name,verbose_name){
+	function newPriceList(field_name,verbose_name){//generlaized function for the price module, takes same parmamters as others
 		search.addWidget(
 			instantsearch.widgets.priceRanges({
 				container:'#'+field_name,
@@ -108,7 +110,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		);	
 	}
 
-	function newRangeInput(field_name,verbose_name){
+	function newRangeInput(field_name,verbose_name){//generlaizd ffunction for INTEGER type fields
 		search.addWidget(
 			instantsearch.widgets.rangeInput({
 				container:'#'+field_name,
@@ -124,12 +126,13 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		);	
 	}
 
+	//process and generates the proper parameters depending on field
 	{% for field_name, values in attributes.items %}
 		switch ('{{ values.1 }}'){
 			case 'CharField':
 				newRefinementList('{{field_name}}','{{values.0}}');
 				break;
-			case 'Integerfield':
+			case 'IntegerField':
 				newRangeInput('{{field_name}}','{{values.0}}');
 				break;
 			case 'DecimalField':
@@ -145,6 +148,8 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			placeholder:'Search for Results'	
 		})
 	);
+
+	{% comment %}
 
 	//initialize RefinementList
 	//attributeName needs to be abstracted later
@@ -203,8 +208,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})
 	);
 
+	{% endcomment %}
+
 	//sets up widget to display search results
 	//hackish solution to images: use {% get_media_prefix %} for MEDIA_ROOT and call {{image}}
+	//TODO: generalize this
 	search.addWidget(
 		instantsearch.widgets.hits({
 			container:'#hits',
