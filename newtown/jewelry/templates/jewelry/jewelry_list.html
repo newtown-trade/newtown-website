@@ -213,13 +213,14 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	//sets up widget to display search results
 	//hackish solution to images: use {% get_media_prefix %} for MEDIA_ROOT and call {{image}}
 	//TODO: generalize this
+	//PLAN: make jewelry system an inhertiable template
 	search.addWidget(
 		instantsearch.widgets.hits({
 			container:'#hits',
 			templates:{
 				empty:'no results',
 				//PROBLEM: size and price are not searchable
-				item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{metal_url_specific}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %} //need to address ObjectID problem
+				item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{metal_url_specific}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %}
 			}	
 		})
 	);
