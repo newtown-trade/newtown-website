@@ -42,7 +42,7 @@ def metals(request):
 	model_name=Metal.__name__
 	'''
 
-	return render(request,'jewelry/jewelry_list.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific'))
+	return render(request,'jewelry/metal.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific'))
 	#return render(request, 'jewelry/jewelry_list.html',{'metal_url_specific':metal_specific_url,'model_name':model_name,'attributes':attributes}) 
 def metal_specific(request,metal_id):
 	metal_jewelry = get_object_or_404(Metal,pk=metal_id)

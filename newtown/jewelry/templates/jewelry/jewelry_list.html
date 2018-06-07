@@ -74,12 +74,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 {% comment %}a template for all the hits. TODO: convert this into generic form when template is generalized {% endcomment %}
 	<div class = "hit">
 		<div class = "hit-image">
-			<img src = "{% get_media_prefix%}{% verbatim%}{{image}}{% endverbatim %}">
+			<img src = "{% block hit_image %}{% endblock %}">
 		</div>	
 		<div class = "hit-content">
-			<h2>{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}</h2>
-			<p>Size: {% verbatim %}{{size}} mm.{% endverbatim %}</p>
-			<p>Price: ${% verbatim %}{{price}}{% endverbatim %}</p>
+			<h2>{% block hit_header %} {% endblock %}</h2>
+			{% block hit_details %}{% endblock %}
 		</div>
 	</div>
 </script>
@@ -234,7 +233,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		instantsearch.widgets.hits({
 			container:'#hits',
 			templates:{
-				empty:'no results',
+				empty:'Mo Results',
 				//PROBLEM: size and price are not searchable
 				item:document.getElementById('hit-template').innerHTML
 				//item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{specific_url}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %}
