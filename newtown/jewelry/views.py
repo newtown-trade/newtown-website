@@ -9,21 +9,23 @@ def index(request):
 def metals(request):
 	metal_choices = Metal.METAL_CHOICES
 	jewelry_items= Metal.objects.all()
-	price_range = [jewelry_items.aggregate(Min('price')),jewelry_items.aggregate(Max('price'))]
-	size_range = [jewelry_items.aggregate(Min('size')),jewelry_items.aggregate(Max('size'))]
+	#price_range = [jewelry_items.aggregate(Min('price')),jewelry_items.aggregate(Max('price'))]
+	#size_range = [jewelry_items.aggregate(Min('size')),jewelry_items.aggregate(Max('size'))]
 
-	metal_attributes= Metal._meta.fields
-	for i in metal_attributes:
-		print(i.verbose_name)
-	
+	#gets attributes of Metal's fields that are indexable under Algolia, such that Algolia's search parameters can be generated
 	attributes = {}
-	for i in Metal._meta.fields:
-		attributes[str(i)].append(i.name,i.verbose_name)	
+	for i in Metal._meta.get_fields():
+		if i.get_internal_type() in ['ManyToManyField','AutoField','FileField','ImageField']:
+			pass
+		else:
+			attributes[i.name] = [i.verbose_name,str(i.get_internal_type())]	
 	print(attributes)
 
-	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items,'metal_url_specific':reverse('jewelry:metal_specific',args=[1337]).replace('1337','{{objectID}}')}) #1337 is arbitrary
+	#pre-generates a url to create specific links for Algolia's objects:	
+	metal_specific_url=reverse('jewelry:metal_specific',args=[1337]).replace('1337','{{objectID}}') #1337 is arbitrary
+
+	return render(request, 'jewelry/jewelry_list.html',{'jewelry_items':jewelry_items,'metal_url_specific':metal_specific_url}) 
 def metal_specific(request,metal_id):
-	print('ObjectID: ' + str(metal_id))
 	metal_jewelry = get_object_or_404(Metal,pk=metal_id)
 	return render(request,'jewelry/jewelry_specific.html',{metal_jewelry:'metal_jewelry'})
 def display(request):
