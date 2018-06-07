@@ -1,14 +1,15 @@
-{% comment %}
-
-specific details for the Metal class
-these could not be generalized because these are Algolia-indexed 
-
-{% endcomment %}
 {% extends 'jewelry/jewelry_list.html' %}
 {% load static %}
 {% block hit_image %}{% get_media_prefix%}{% verbatim%}{{image}}{% endverbatim %}{% endblock %}
-{% block hit_header%}{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}{% endblock %}
+{% block hit_header%}{% verbatim %}<a href = "{% endverbatim %}{{specific_url}}{% verbatim %}">{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}</a>{% endblock %}
 {% block hit_details %}
 	<p>Size: {% verbatim %}{{size}} mm.{% endverbatim %}</p>
 	<p>Price: ${% verbatim %}{{price}}{% endverbatim %}</p>
 {% endblock %}
+{% comment %}
+
+specific details for the Metal class
+these could not be generalized because these are Algolia-indexed
+extends has to be first, therefore comments are at the boottom
+
+{% endcomment %}

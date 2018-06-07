@@ -33,40 +33,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	<div id="hits">
 	  <!-- Hits widget will appear here -->
 	</div>
-
-	{% comment %}//old legacy code kept around in case things break
-		<div id = "refinement-list">
-			<!-- refinement list widget FOR METALS will appear here-->
-		</div>
-
-		<div id = "jewelry-types">
-			<!-- refimenet list widget FOR JEWELRY TYPES will appear here -->
-		</div>
-
-		<div id = "price">
-			<!-- priceRange results appear here-->
-		</div>
-
-		<div id = "size">
-			<!-- size options go here -->
-		</div>
-
-		{% if jewelry_items %}
-			<ul>
-				{% for jewelry in jewelry_items %}
-					<li>{{jewelry}}</li>
-					<ul>
-						<li>Jewelry Type: {{jewelry.jewelry_type}}</li>
-						<li>Size: {{jewelry.size}} mm.</li>
-						<li>Metal: {{jewelry.metal}}</li>
-						<li>Price: ${{jewelry.price}}</li>
-						<li>Image:<img src="{{jewelry.image.url}}"></li>
-					</ul>
-				{% endfor %}
-			</ul>
-		{% endif %}
-	{% endcomment %}
-
 </body>
 
 
@@ -164,67 +130,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})
 	);
 
-	{% comment %}
-
-	//initialize RefinementList
-	//attributeName needs to be abstracted later
-	search.addWidget(
-		instantsearch.widgets.refinementList({
-			container: '#refinement-list',
-			operator:'or',
-			attributeName: 'metal',
-			templates:{
-				header:'Types of Metals',	
-			}
-		})
-	);
-
-	//initialize RefinementList for jewelry type
-	//this also needs to be appropriately abstracted later
-	search.addWidget(
-		instantsearch.widgets.refinementList({
-			container:'#jewelry-types',
-			operator:'or',
-			attributeName:'jewelry_type',
-			templates:{
-				header:'Type of Jewelry',	
-			}	
-		})
-	);
-
-	//widget for price
-	search.addWidget(
-		instantsearch.widgets.priceRanges({
-			container:'#price',
-			attributeName:'price',	
-			labels:{
-				currency:'$',
-				seperator:'to',
-				button:'Go',	
-			},
-			templates:{
-				header:'Price'	
-			}
-		})
-	);
-
-	//widget for size
-	search.addWidget(
-		instantsearch.widgets.rangeInput({
-			container:'#size',
-			attributeName:'size',
-			templates:{
-				header:'Size (mm.)',	
-			},	
-			labels:{
-				separator:'to',
-				button:'Go',	
-			}
-		})
-	);
-
-	{% endcomment %}
-
 	//sets up widget to display search results
 	//hackish solution to images: use {% get_media_prefix %} for MEDIA_ROOT and call {{image}}
 	//TODO: generalize this
@@ -236,7 +141,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 				empty:'Mo Results',
 				//PROBLEM: size and price are not searchable
 				item:document.getElementById('hit-template').innerHTML
-				//item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{specific_url}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %}
 			}	
 		})
 	);
