@@ -19,7 +19,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 </head>
 
 <body>
-	
 	<a href="{% url 'jewelry:index' %}">Back to Jewelry</a>
 	<!-- TODO: search refinement widget IDs should be standardized to match the model field they're paired with -->
 	<div id="search-box">
@@ -70,9 +69,55 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	const search = instantsearch({
 		appId: 'SCHJVEFMZ6',
 		apiKey: '5eb2a2d465e0a2d9be23ead26762c22d',
-		indexName: 'Metal', 
+		indexName: '{{model_name}}', 
 		urlSync: true
 	});
+
+	function newRefinementList(field_name,verbose_name){ //assigns field_name to container and header, verobse_name to header, corresponds to category-type search
+		search.addWidget(
+			instantsearch.widgets.refinementList({
+				container: '#' + field_name,
+				operator:'or',
+				attributeName: field_name,	
+				templates:{
+					header:verbose_name,	
+				}
+			})
+		);	
+	}
+
+	function newPriceList(field_name,verbose_name){
+		search.addWidget(
+			instantsearch.widgets.priceRanges({
+				container:'#'+field_name,
+				attributeName:field_name,
+				labels:{
+					currency:'$',
+					seperator:'to',
+					button:'Go',	
+				},
+				templates:{
+					header:verbvose_name	
+				}
+			})
+		);	
+	}
+
+	function newRangeInput(field_name,verbose_name){
+		search.addWidget(
+			instantsearch.widgets.rangeInput({
+				container:'#'+field_name,
+				attributeName:field_name,
+				templates:{
+					header:verbose_name,	
+				},
+				labels:{
+					separator:'to',
+					button:'Go',	
+				}
+			})
+		);	
+	}
 
 	//initializes search box itself
 	search.addWidget(
