@@ -27,26 +27,20 @@ def index(request):
 
 def metals(request):
 	#legacy code kept in case something breaks
-	'''
-	#gets attributes of Metal's fields that are indexable under Algolia, such that Algolia's search parameters can be generated
-	attributes = {}
-	for i in Metal._meta.get_fields():
-		if i.get_internal_type() in ['ManyToManyField','AutoField','FileField','ImageField']:
-			pass
-		else:
-			attributes[i.name] = [i.verbose_name,str(i.get_internal_type())]	
-	print(attributes)
-
-	#pre-generates a url to create specific links for Algolia's objects:	
-	metal_specific_url=reverse('jewelry:metal_specific',args=[1337]).replace('1337','{{objectID}}') #1337 is arbitrary
-	model_name=Metal.__name__
-	'''
 
 	return render(request,'jewelry/metal.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific'))
 	#return render(request, 'jewelry/jewelry_list.html',{'metal_url_specific':metal_specific_url,'model_name':model_name,'attributes':attributes}) 
+
 def metal_specific(request,metal_id):
 	metal_jewelry = get_object_or_404(Metal,pk=metal_id)
 	return render(request,'jewelry/jewelry_specific.html',{metal_jewelry:'metal_jewelry'})
+
+def contactLense(request):
+	return HttpResponse('test for contact lense')
+def contactLenseSpecific(request,contactLense_id):
+	contact_lense_specific = get_object_or_404(ContactLense,pk=contactLense_id)
+	return HttpResponse(contact_lense_specific.color)	
+
 def display(request):
 	displays = Display.objects.all()
 	return render(request,'jewelry/display_temp.html')#this will be superseded by a generic view later
