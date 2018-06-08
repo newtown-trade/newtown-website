@@ -132,8 +132,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 
 	//sets up widget to display search results
 	//hackish solution to images: use {% get_media_prefix %} for MEDIA_ROOT and call {{image}}
-	//TODO: generalize this
-	//PLAN: make jewelry system an inhertiable template
 	search.addWidget(
 		instantsearch.widgets.hits({
 			container:'#hits',

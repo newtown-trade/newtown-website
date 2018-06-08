@@ -50,3 +50,10 @@ class ContactLense(models.Model):
 	color=models.CharField(max_length=50)
 	size=models.IntegerField(default=0)
 	price=models.DecimalField(max_digits=6,decimal_places=2)
+
+	def __str__(self):
+		return self.color + ' Lense, ' + str(self.size) + ' mm.'
+
+	class Meta:
+		verbose_name='Contact Lense'
+		verbose_name_plural='Contact Lenses'
