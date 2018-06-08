@@ -6,3 +6,5 @@ from algoliasearch_django import AlgoliaIndex
 
 class MetalIndex(AlgoliaIndex):
 	settings={'attributesForFaceting':['metal','jewelry_type','price','size']}
+class ContactLenseIndex(AlgoliaIndex):
+	settings={'attributesForFaceting':['color','size','price']}
