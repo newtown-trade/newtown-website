@@ -2,11 +2,12 @@ from django.db import models
 
 #additional classes/fields will be implemented depending on production needs
 
-#returns dynamic folder structure for Metal
-#this produces a SuspiciousFileOperation that Django rejects
+#returns dynamic image folder structure for Metal
 def upload_metal(instance,filename):
 	return 'metals/%s/%s/%s' % (instance.metal, instance.jewelry_type.replace(" ","_"),filename)
-
+#dynamic folder image folder structure for ContactLEnse
+def upload_lense(instance,filename):
+	return 'contactLense/'
 class Metal(models.Model):
 	GOLD = 'Gold'
 	SILVER = 'Silver'
@@ -47,9 +48,18 @@ class Display(models.Model):
 #class for Contact Lenses
 #separated because totally different stats
 class ContactLense(models.Model):
-	color=models.CharField(max_length=50)
-	size=models.IntegerField(default=0)
-	price=models.DecimalField(max_digits=6,decimal_places=2)
+	COLORS = (
+		('Purple','Purple'),
+		('Blue','Blue'),
+		('Green','Green'),
+		('Yellow','Yellow'),
+		('Orange','Orange'),
+		('Red','Red'),
+	)	
+	color=models.CharField(max_length=50,choices=COLORS,default='Red',verbose_name='Color')
+	size=models.IntegerField(default=0,verbose_name='Size (mm.)')
+	price=models.DecimalField(max_digits=6,decimal_places=2,verbose_name='Price')
+	#image = Models.Imagefield(upload_to=upload_lense,null=True)
 
 	def __str__(self):
 		return self.color + ' Lense, ' + str(self.size) + ' mm.'
