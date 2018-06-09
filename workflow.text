@@ -31,8 +31,8 @@ v0.4:
 
 v0.5
 -make Metal Algolia frontend work with Contact lense
--generalize metals frontend to work with any jewelry
--implement Django Template system with Algolia in general
+-generalize metals frontend to work with any jewelry [DONE]
+-implement Django Template system with Algolia in general [DONE WITH JEWELRY SPECIFIC]
 
 -create homepage frontend
 -create jewelry homepage frontend
