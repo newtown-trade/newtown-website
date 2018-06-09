@@ -55,10 +55,9 @@ def metal_specific(request,metal_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Metal,pk=metal_id),reverse('jewelry:metals'))) #see comments for get_specific_item
 
 def contactLense(request):
-	return HttpResponse('test for contact lense')
+	return render(request,'jewelry/contactLense.html',generate_context(ContactLense._meta.get_fields(),ContactLense.__name__,'contactLenseSpecific'))
 def contactLenseSpecific(request,contactLense_id):
-	contact_lense_specific = get_object_or_404(ContactLense,pk=contactLense_id)
-	return HttpResponse(contact_lense_specific.color)	
+	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(ContactLense,pk=contactLense_id),reverse('jewelry:contactLense')))
 
 def display(request):
 	displays = Display.objects.all()
