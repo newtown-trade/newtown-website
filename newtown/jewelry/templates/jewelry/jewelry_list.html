@@ -33,6 +33,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	<div id="hits">
 	  <!-- Hits widget will appear here -->
 	</div>
+
+	<div id = "pagination">
+		<!-- pagination goes here -->
+	</div>
+
 </body>
 
 
@@ -140,6 +145,15 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 				//PROBLEM: size and price are not searchable
 				item:document.getElementById('hit-template').innerHTML
 			}	
+		})
+	);
+	
+	//sets up widget for pagination
+	search.addWidget(
+		instantsearch.widgets.pagination({
+			container:'#pagination',
+			maxPages:20,
+			scrollTo:false
 		})
 	);
 
