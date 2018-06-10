@@ -8,4 +8,6 @@ class MetalIndex(AlgoliaIndex):
 	parameters = ['metal','jewelry_type','price','size']
 	settings={'attributesForFaceting':parameters,'searchableAttributes':parameters,'attributesToHighlight':parameters}
 class ContactLenseIndex(AlgoliaIndex):
-	settings={'attributesForFaceting':['color','size','price']}
+	parameters = ['color','size','price']
+	settings={'attributesForFaceting':parameters,'searchableAttributes':parameters,'attributesToHighlight':parameters}
+
