@@ -5,7 +5,7 @@ from .index import *
 class JewelryConfig(AppConfig):
 	name = 'jewelry'
 
-	#registers Metal model with django
+	#registers  models with django and algolai
 	def ready(self):
 		Metal = self.get_model('Metal')
 		algoliasearch.register(Metal,MetalIndex)

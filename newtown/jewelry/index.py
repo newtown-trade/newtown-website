@@ -5,6 +5,7 @@
 from algoliasearch_django import AlgoliaIndex
 
 class MetalIndex(AlgoliaIndex):
-	settings={'attributesForFaceting':['metal','jewelry_type','price','size']}
+	parameters = ['metal','jewelry_type','price','size']
+	settings={'attributesForFaceting':parameters,'searchableAttributes':parameters,'attributesToHighlight':parameters}
 class ContactLenseIndex(AlgoliaIndex):
 	settings={'attributesForFaceting':['color','size','price']}
