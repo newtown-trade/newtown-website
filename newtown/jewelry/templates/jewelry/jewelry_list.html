@@ -144,6 +144,17 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})	
 	);
 
+	//clears out refined values
+	search.addWidget(
+		instantsearch.widgets.clearAll({
+			container:'#clear-all',
+			templates:{
+				link:'Reset all parameters'	
+			},
+			autoHideContainer:false
+		})
+	);
+
 	//initializes search box itself
 	search.addWidget(
 		instantsearch.widgets.searchBox({
