@@ -21,6 +21,14 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 <body>
 	<a href="{% url 'jewelry:index' %}">Back to Jewelry</a>
 
+	<div id = "current-refined-values">
+		<!-- CurrentRefinedValues widget appers here-->
+	</div>
+
+	<div id = "clear-all">
+		<!-- ClearAll widget appears here -->
+	</div>
+
 	{%comment %}generates the required divs for algolia to function {% endcomment %}
 	{% for field_name,values in attributes.items %}
 		<div id = '{{field_name}}'></div>
@@ -126,6 +134,15 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 				break;
 		}
 	{% endfor %}	
+
+	//grabs list of values already selected by user
+	//action of "clearing out" values left to clearAll
+	search.addWidget(
+		instantsearch.widgets.currentRefinedValues({
+			container:'#current-refined-values',
+			clearAll:false	
+		})	
+	);
 
 	//initializes search box itself
 	search.addWidget(
