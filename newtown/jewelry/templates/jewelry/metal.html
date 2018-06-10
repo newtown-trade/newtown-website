@@ -3,7 +3,7 @@
 {% block hit_image %}{% get_media_prefix%}{% verbatim%}{{image}}{% endverbatim %}{% endblock %}
 {% block hit_header%}{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}{% endblock %}
 {% block hit_details %}
-	<p>Size: {% verbatim %}{{{_highlightResult.size.value}}} mm.{% endverbatim %}</p>
+	<p>Size: {% verbatim %}{{size}} mm.{% endverbatim %}</p>
 	<p>Price: ${% verbatim %}{{price}}{% endverbatim %}</p>
 {% endblock %}
 {% comment %}
