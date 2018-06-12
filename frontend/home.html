@@ -12,6 +12,9 @@
 		<!-- Bootstrap CDN -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+		<!-- fontawesome CDN -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
 	</head>
 
 	<body>
@@ -34,10 +37,10 @@
 						<a class="dropdown-item" href="#">Contact Lenses</a>
 					</div>
 				</li>
-				<li class = "nav-item" href = "#">
+				<li class = "nav-item">
 					<a class = "nav-link" href = "#">Displays</a>
 				</li>
-				<li class = "nav-item" href = "#">
+				<li class = "nav-item">
 					<a class = "nav-link" href = "#">Contact Us</a>
 				</li>
 			</ul>	
@@ -61,18 +64,67 @@
 				</div>
 			</div>
 
+			<!-- displays inventory -->
+			<!--POSSIBLE NEEDED PROVISIONS LATER: carousel for prominent pictures-->
 			<h2 style = "padding:1rem">Check out the newest things we've added to our inventory!</h2>
 			<div class = "row" id = "new-stuff">
 				<!--add CSS after SASS is implemented fully-->
+				<!-- decide on a systematic color theme later -->
 				<div class = "col-md-6">
-					<h2>Earrings, Nose Hooks, & Bracelets</h1>
+					<h2 style ="background-color:red; padding:2rem" class = "text-center">Earrings, Nose Hooks, Bracelets</h1>
+					<div class = "list-group text-right">
+						<!-- add a {for} loop thing here -->
+						<div class = "list-group-item">Test Item</div>
+						<div class = "list-group-item">Test Item</div>
+						<div class = "list-group-item">Test Item</div>
+					</div>
+					<h3 class = "text-center" style = "padding:1rem">See More</h3>
 				</div>
 				<div class = "col-md-6">
-					<h2>Contact Lenses</h2>
+					<h2 style = "background-color:red; padding:2rem" class = "text-center">Contact Lenses</h2>
+					<div class = "list-group">
+						<!-- add a {for} loop thing here -->
+						<div class = "list-group-item">Test Item</div>
+						<div class = "list-group-item">Test Item</div>
+						<div class = "list-group-item">Test Item</div>
+					</div>
+					<h3 class = "text-center" style = "padding:1rem">See More</h3>
 				</div>
 			</div>
 		</div>
 
+		<!-- TODO: add photo gallery here or something -->
+		<h1 class = "text-center" style = "padding:1rem">Visit our Full Inventory <a href = "">Here!</a></h1>
+
+		<!-- FOOTER -->
+		<!-- consider adding (another) full item search here -->
+		<div class = "jumbotron" style = "margin-bottom:0; padding-bottom:1rem">
+			<div class = "container-fluid">
+				<h1 class = "text-center">Reach out to us with any questions!</h1>
+				<h3 class = "text-center">
+					<a href = "mailto:newtown0312@yahoo.com" style = "padding:1rem"><i class="fas fa-envelope-square"></i> Email </a>
+					<a href = "#" style = "padding:1rem"><i class="fas fa-inbox"></i> Contact Us </a>
+					<a href = "" style = "padding:1rem"><i class="fas fa-phone-square"></i> 917-538-9504 </a>
+				</h3>
+			</div>
+			<div class = "row">
+				<div class = "col-md-6 text-right">
+					<h2>Sign up to recieve updates!</h2>
+					<!-- TODO: insert form generation using Django later-->
+					<!--TODO: improve this with best practices -->
+				</div>
+				<div class = "col-md-6 text-left">
+					<h2>Important Links</h2>	
+					<ul>
+						<li>Privacy Policy</li>
+						<li>Sitemap</li>
+						<li>Terms of Use</li>
+					</ul>
+				</div>
+			</div>
+			<!-- TODO: make 2018 generated -->
+			<p class = "text-center">© 2018 Newtown Trade. All Rights Reserved.</p>
+		</div>
 	</body>
 
 	<!--Javscript-->
