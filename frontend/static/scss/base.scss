@@ -1,0 +1,15 @@
+$header-color: #472480;
+$menu-color: #00C9A9;
+$secondary-color: #C4FCF0;
+$tertiary-color:#4C8076;
+
+@import 'home';
+
+.header-colorin{
+	color:white;
+	background-color:$header-color;	
+	padding:2rem;
+}
+.menu-colorin{
+	background-color:$menu-color;	
+}

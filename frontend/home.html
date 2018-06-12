@@ -15,6 +15,9 @@
 		<!-- fontawesome CDN -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
+		<!--base css file -->
+		<link rel = "stylesheet" href = "static/css/base.css" >
+
 	</head>
 
 	<body>
@@ -22,7 +25,7 @@
 		<!-- header -->
 
 		<!-- make navabar collapsable later for mobile support -->
-		<nav class = "navbar navbar-light bg-light navbar-expand-md">
+		<nav class = "navbar navbar-light navbar-expand-md menu-colorin">
 
 			<!--TODO: add logo in navbar-brand-->
 			<a class = "navbar-brand" href = "#">Newtown Trade</a>
@@ -47,16 +50,14 @@
 			<!-- TODO: add search bar for full algolia search-->
 		</nav>
 
-		<div class = "jumbotron">
-			<div class = "container-fluid text-center">
-				<h1>Attractive Jewelry at an Affordable Cost</h1>
-			</div>
+		<div class = "jumbotron jumbotron-fluid d-flex align-items-center" id = "hero-banner">
+			<div class = "container-fluid text-center"><h1>Attractive Jewelry at an Affordable Cost</h1></div>
 		</div>
 
 		<div class = "container">
 			<div class = "row">
 				<!-- TODO: make this text vertically aligned-->
-				<div class = "col-md-8 text-right">
+				<div class = "col-md-8 text-right my-auto">
 					<h1 class = "align-middle">Newtown Trade is a small buisness that seeks to <em>facilitate selling beauty to customers</em>.</h1>
 				</div>
 				<div class = "col-md-4">
@@ -71,7 +72,7 @@
 				<!--add CSS after SASS is implemented fully-->
 				<!-- decide on a systematic color theme later -->
 				<div class = "col-md-6">
-					<h2 style ="background-color:red; padding:2rem" class = "text-center">Earrings, Nose Hooks, Bracelets</h1>
+					<h2 class = "text-center header-colorin">Earrings, Nose Hooks, Bracelets</h1>
 					<div class = "list-group text-right">
 						<!-- add a {for} loop thing here -->
 						<div class = "list-group-item">Test Item</div>
@@ -81,7 +82,7 @@
 					<h3 class = "text-center" style = "padding:1rem">See More</h3>
 				</div>
 				<div class = "col-md-6">
-					<h2 style = "background-color:red; padding:2rem" class = "text-center">Contact Lenses</h2>
+					<h2 class = "text-center header-colorin">Contact Lenses</h2>
 					<div class = "list-group">
 						<!-- add a {for} loop thing here -->
 						<div class = "list-group-item">Test Item</div>
