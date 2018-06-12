@@ -1,7 +1,7 @@
-$header-color: #472480;
+$tertiary-color: #472480;
 $menu-color: #00C9A9;
 $secondary-color: #C4FCF0;
-$tertiary-color:#4C8076;
+$header-color:#4C8076;
 
 @import 'home';
 
@@ -12,4 +12,12 @@ $tertiary-color:#4C8076;
 }
 .menu-colorin{
 	background-color:$menu-color;	
+}
+
+#footer{
+	margin-bottom:0; 
+	padding-bottom:1rem;
+	a{
+		color:$tertiary-color;	
+	}
 }

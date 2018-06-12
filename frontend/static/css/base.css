@@ -1,5 +1,5 @@
 #hero-banner {
-  height: 30rem;
+  height: 50rem;
   background: linear-gradient(to bottom right, #C4FCF0, #472480); }
   #hero-banner h1 {
     font-size: 5rem;
@@ -7,8 +7,14 @@
 
 .header-colorin {
   color: white;
-  background-color: #472480;
+  background-color: #4C8076;
   padding: 2rem; }
 
 .menu-colorin {
   background-color: #00C9A9; }
+
+#footer {
+  margin-bottom: 0;
+  padding-bottom: 1rem; }
+  #footer a {
+    color: #472480; }
