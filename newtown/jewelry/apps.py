@@ -11,3 +11,5 @@ class JewelryConfig(AppConfig):
 		algoliasearch.register(Metal,MetalIndex)
 		ContactLense = self.get_model('ContactLense')
 		algoliasearch.register(ContactLense,ContactLenseIndex)
+		Display = self.get_model('Display')
+		algoliasearch.register(Display,DisplayIndex)

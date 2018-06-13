@@ -10,4 +10,6 @@ class MetalIndex(AlgoliaIndex):
 class ContactLenseIndex(AlgoliaIndex):
 	parameters = ['color','size','price']
 	settings={'attributesForFaceting':parameters,'searchableAttributes':parameters,'attributesToHighlight':parameters}
-
+class DisplayIndex(AlgoliaIndex):
+	parameters = ['name','full_price','length','width']
+	settings = {'attributesForFaceting':parameters,'searchableAttributes':parameters,'attributesToHighlight':parameters}

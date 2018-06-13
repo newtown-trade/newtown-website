@@ -60,6 +60,7 @@ def contactLenseSpecific(request,contactLense_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(ContactLense,pk=contactLense_id),reverse('jewelry:contactLense')))
 
 def display(request):
-	displays = Display.objects.all()
-	return render(request,'jewelry/display_temp.html')#this will be superseded by a generic view later
+	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name,'displaySpecific'))
+def displaySpecific(request,display_id):
+	pass
 
