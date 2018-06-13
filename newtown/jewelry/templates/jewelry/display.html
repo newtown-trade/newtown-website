@@ -1,1 +1,10 @@
-<p>test</p>
+{% extends 'jewelry/jewelry_list.html' %}
+{% load static %}
+
+{% block hit_image %}{% get_media_prefix %}{% verbatim %}{{image}}{% endverbatim %}{% endblock %}
+{% block hit_header %}{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}{% endblock %}
+{% block hit_details %}
+	<p>Length: {% verbatim %}{{length}}{% endverbatim %} mm.</p>
+	<p>Width: {% verbatim %}{{width}}{% endverbatim %} mm.</p>
+	<p>Price: ${% verbatim %}{{full_price}}{% endverbatim %}</p>
+{% endblock %}
