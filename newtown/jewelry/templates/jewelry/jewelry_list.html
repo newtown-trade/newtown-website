@@ -1,54 +1,64 @@
+{% extends 'newtown/home.html' %}
+{% load static %}
 {% comment %}
 MOVE HEADER TO GENERIC TEMPLATE
 MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 {% endcomment %}
 
-{% load static %}
 
-<head>
-	<title>test</title>
-
-	<!-- algolia cdns -->
-
+{% block csshead %}
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4"></script>
 
 	<!-- basic instantsearch styling, probably might be overridden with Bootstrap + custom -->
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch-theme-algolia.min.css">
-</head>
+{% endblock %}
 
-<body>
-	<a href="{% url 'jewelry:index' %}">Back to Jewelry</a>
+{% block body_nocontainer %}
+	<div class = "container">
+		<div class = "jumbotron header-colorin-bigger">
+			<h1>Earrings, Nose Hooks, Bracelets</h1>
+		</div>
+		<h3><a href="{% url 'jewelry:index' %}">Back to Jewelry</a></h3>
 
-	<div id = "current-refined-values">
-		<!-- CurrentRefinedValues widget appers here-->
+		
+
+		<div class = "row">
+			<div class = "col-md-3">
+				<div id="search-box" style = "margin-bottom:1rem;">
+					<!-- SearchBox widget will appear here -->
+				</div>
+
+				<div id = "current-refined-values">
+					<!-- CurrentRefinedValues widget appers here-->
+				</div>
+
+				<div id = "clear-all">
+					<!-- ClearAll widget appears here -->
+				</div>
+
+				{%comment %}generates the required divs for algolia to function {% endcomment %}
+				{% for field_name,values in attributes.items %}
+					<div id = '{{field_name}}'></div>
+				{% endfor %}
+			</div>
+			
+			<div class = "col-md-9">
+				
+				<div id="hits">
+				  <!-- Hits widget will appear here -->
+				</div>
+
+				<div id = "pagination">
+					<!-- pagination goes here -->
+				</div>
+			</div>
+		</div>
 	</div>
+{% endblock %}
 
-	<div id = "clear-all">
-		<!-- ClearAll widget appears here -->
-	</div>
-
-	{%comment %}generates the required divs for algolia to function {% endcomment %}
-	{% for field_name,values in attributes.items %}
-		<div id = '{{field_name}}'></div>
-	{% endfor %}
-
-	<div id="search-box">
-		<!-- SearchBox widget will appear here -->
-	</div>
-
-	<div id="hits">
-	  <!-- Hits widget will appear here -->
-	</div>
-
-	<div id = "pagination">
-		<!-- pagination goes here -->
-	</div>
-
-</body>
-
-
+{% block javascript %}
 <script id = "hit-template">
 {% comment %}a template for all the hits. the specific jewelry files will take it from here {% endcomment %}
 	<div class = "hit">
@@ -188,3 +198,4 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 	//self-explanatory
 	search.start();
 </script>
+{% endblock %}
