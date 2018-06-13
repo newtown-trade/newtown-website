@@ -1,0 +1,11 @@
+.circle-select i{
+	font-size:5rem;	
+	padding:3rem;
+	background-color:$secondary-color;
+	border:5px solid black;
+	border-radius:50%;
+	&:hover{
+		background-color:#649CEE;	
+	}
+}
+

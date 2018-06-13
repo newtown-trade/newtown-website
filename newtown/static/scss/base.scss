@@ -3,8 +3,6 @@ $menu-color: #00C9A9;
 $secondary-color: #C4FCF0;
 $header-color:#4C8076;
 
-@import 'home';
-
 .header-colorin{
 	color:white;
 	background-color:$header-color;	
@@ -14,6 +12,9 @@ $header-color:#4C8076;
 	background-color:$menu-color;	
 }
 .links{
+	color:$tertiary-color;	
+}
+.container a{
 	color:$tertiary-color;	
 }
 #footer{
@@ -26,3 +27,7 @@ $header-color:#4C8076;
 		margin:auto;	
 	}
 }
+
+@import 'home';
+@import 'jewelry_root'
+

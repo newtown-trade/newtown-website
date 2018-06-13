@@ -1,5 +1,21 @@
+{% extends 'newtown/home.html' %}
+{% block body_nocontainer %}
+<div class = "container">
+<h1>Please select an option.</h1>
+	<div class = "row circle-select">
+		<div class = "col-md-6 text-center">
+			<a href = "{% url 'jewelry:metals' %}">
+			<i class="fas fa-gem"></i>	
+			<h2>Earrings, Nose Hooks, Bracelets</h2>
+			</a>
+		</div>
+		<div class = "col-md-6 text-center">
+			<a href = "{% url 'jewelry:contactLense' %}">
+			<i class="fas fa-eye"></i>
+			<h2>Contact Lenses</h2>
+			</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
 {% comment %}append to here each additional jewelry type. link back home to be implemented with larger template system{% endcomment %}
-<ul>
-	<li><a href="{% url 'jewelry:metals' %}">Metals</a></li>
-	<li><a href = "{% url 'jewelry:contactLense' %}">Contact Lenses<a></li>
-</ul>
