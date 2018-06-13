@@ -9,6 +9,8 @@
   color: white;
   background-color: #4C8076;
   height: 20rem; }
+  .header-colorin-bigger h1 {
+    font-size: 4rem; }
 
 .menu-colorin {
   background-color: #00C9A9; }

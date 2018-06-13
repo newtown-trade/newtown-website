@@ -36,9 +36,20 @@ v0.5
 
 -make contacts and displays fully operational[DONE]
 
--create homepage frontend
--create jewelry homepage frontend
--create flatpages (e.g. about us)
--integrate frontend with backend
+-create homepage frontend[DONE]
+-create jewelry homepage frontend[DONE]
+-create flatpages (e.g. about us, terms of use)
+-integrate frontend with backend[IN PROGRESS]
+
+-create a logo and attach as favicon
+-integrate UI with item-specific results
+-get universal search working
+-get contact us working
+-get sign up for updates working
+
 
 -first release to dad
+
+v0.6
+-sitemap
+-requested changes from dad
