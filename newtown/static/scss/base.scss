@@ -8,6 +8,12 @@ $header-color:#4C8076;
 	background-color:$header-color;	
 	padding:2rem;
 }
+.header-colorin-bigger{ /*note: assumed to be jumbotron*/
+	margin-top:1rem;
+	color:white;
+	background-color:$header-color;
+	height: 20rem;
+}
 .menu-colorin{
 	background-color:$menu-color;	
 }
@@ -17,7 +23,9 @@ $header-color:#4C8076;
 .container a{
 	color:$tertiary-color;	
 }
+
 #footer{
+	margin-top:1rem;
 	margin-bottom:0; 
 	padding-bottom:1rem;
 	a{
@@ -27,6 +35,7 @@ $header-color:#4C8076;
 		margin:auto;	
 	}
 }
+
 
 @import 'home';
 @import 'jewelry_root'

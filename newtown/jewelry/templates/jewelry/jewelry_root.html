@@ -1,7 +1,10 @@
 {% extends 'newtown/home.html' %}
 {% block body_nocontainer %}
 <div class = "container">
-<h1>Please select an option.</h1>
+	<div class = "jumbotron header-colorin-bigger">
+		<h1>Jewelry Selection</h1>
+	</div>
+	<h1>Please select an option.</h1>
 	<div class = "row circle-select">
 		<div class = "col-md-6 text-center">
 			<a href = "{% url 'jewelry:metals' %}">

@@ -3,6 +3,13 @@
   background-color: #4C8076;
   padding: 2rem; }
 
+.header-colorin-bigger {
+  /*note: assumed to be jumbotron*/
+  margin-top: 1rem;
+  color: white;
+  background-color: #4C8076;
+  height: 20rem; }
+
 .menu-colorin {
   background-color: #00C9A9; }
 
@@ -13,6 +20,7 @@
   color: #472480; }
 
 #footer {
+  margin-top: 1rem;
   margin-bottom: 0;
   padding-bottom: 1rem; }
   #footer a {
