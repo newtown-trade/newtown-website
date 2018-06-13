@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE hrml>
 <html>
 
@@ -16,7 +17,7 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 		<!--base css file -->
-		<link rel = "stylesheet" href = "static/css/base.css" >
+		<link rel = "stylesheet" href = "{% static 'css/base.css' %}" >
 
 	</head>
 
@@ -64,7 +65,7 @@
 					<h1 class = "align-middle">Newtown Trade is a small buisness that seeks to <em>facilitate selling beauty to customers</em>.</h1>
 				</div>
 				<div class = "col-md-4">
-					<img src = "static/img/jewelry_sample.jpg" class = "img-fluid" alt = "Jewelry">
+					<img src = "{% static 'img/jewelry_sample.jpg' %}" class = "img-fluid" alt = "Jewelry">
 				</div>
 			</div>
 
