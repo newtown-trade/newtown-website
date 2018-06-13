@@ -1,0 +1,28 @@
+$tertiary-color: #472480;
+$menu-color: #00C9A9;
+$secondary-color: #C4FCF0;
+$header-color:#4C8076;
+
+@import 'home';
+
+.header-colorin{
+	color:white;
+	background-color:$header-color;	
+	padding:2rem;
+}
+.menu-colorin{
+	background-color:$menu-color;	
+}
+.links{
+	color:$tertiary-color;	
+}
+#footer{
+	margin-bottom:0; 
+	padding-bottom:1rem;
+	a{
+		color:$tertiary-color;	
+	}
+	#row{
+		margin:auto;	
+	}
+}
