@@ -30,13 +30,15 @@ v0.4:
 -implement algolia search for Display (do not create item-specific pages)[POSTPONED FOR 0.5]
 
 v0.5
--make Metal Algolia frontend work with Contact lense
--generalize metals frontend to work with any jewelry
--implement Django Template system with Algolia in general
+-make Metal Algolia frontend work with Contact lense[DONE]
+-generalize metals frontend to work with any jewelry [DONE]
+-implement Django Template system with Algolia in general [DONE, NEEDS FRONTEN INTEGRATION]
+
+-make contacts and displays fully operational[DONE]
 
 -create homepage frontend
 -create jewelry homepage frontend
 -create flatpages (e.g. about us)
--do not link with django yet
+-integrate frontend with backend
 
 -first release to dad

@@ -19,60 +19,141 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 </head>
 
 <body>
-	
 	<a href="{% url 'jewelry:index' %}">Back to Jewelry</a>
-	<!-- TODO: search refinement widget IDs should be standardized to match the model field they're paired with -->
+
+	<div id = "current-refined-values">
+		<!-- CurrentRefinedValues widget appers here-->
+	</div>
+
+	<div id = "clear-all">
+		<!-- ClearAll widget appears here -->
+	</div>
+
+	{%comment %}generates the required divs for algolia to function {% endcomment %}
+	{% for field_name,values in attributes.items %}
+		<div id = '{{field_name}}'></div>
+	{% endfor %}
+
 	<div id="search-box">
 		<!-- SearchBox widget will appear here -->
-	</div>
-
-	<div id = "refinement-list">
-		<!-- refinement list widget FOR METALS will appear here-->
-	</div>
-
-	<div id = "jewelry-types">
-		<!-- refimenet list widget FOR JEWELRY TYPES will appear here -->
-	</div>
-
-	<div id = "price">
-		<!-- priceRange results appear here-->
-	</div>
-
-	<div id = "size">
-		<!-- size options go here -->
 	</div>
 
 	<div id="hits">
 	  <!-- Hits widget will appear here -->
 	</div>
 
-	{% if jewelry_items %}
-		<ul>
-			{% for jewelry in jewelry_items %}
-				<li>{{jewelry}}</li>
-				<ul>
-					<li>Jewelry Type: {{jewelry.jewelry_type}}</li>
-					<li>Size: {{jewelry.size}} mm.</li>
-					<li>Metal: {{jewelry.metal}}</li>
-					<li>Price: ${{jewelry.price}}</li>
-					<li>Image:<img src="{{jewelry.image.url}}"></li>
-				</ul>
-			{% endfor %}
-		</ul>
-	{% endif %}
+	<div id = "pagination">
+		<!-- pagination goes here -->
+	</div>
 
 </body>
+
+
+<script id = "hit-template">
+{% comment %}a template for all the hits. the specific jewelry files will take it from here {% endcomment %}
+	<div class = "hit">
+		<div class = "hit-image">
+			<img src = "{% block hit_image %}{% endblock %}">
+		</div>	
+		<div class = "hit-content">
+			<h2><a href = "{{specific_url}}">{% block hit_header %} {% endblock %}</a></h2>
+			{% block hit_details %}{% endblock %}
+		</div>
+	</div>
+</script>
 
 <script>
 	//indexName will need to be abstracted to the desired model in Jewelry once this template is generalized
 	//initializes search engine in JavaScript
-	//facetnames are defined in apps.py
+	//facetnames are defined in apps.py,ALWAYS CHECK THERE IF ALGOLIA NOT WORKING
 	const search = instantsearch({
 		appId: 'SCHJVEFMZ6',
 		apiKey: '5eb2a2d465e0a2d9be23ead26762c22d',
-		indexName: 'Metal', 
+		indexName: '{{model_name}}', 
 		urlSync: true
 	});
+
+	function newRefinementList(field_name,verbose_name){ //assigns field_name to container and header, verobse_name to header, corresponds to category-type search
+		search.addWidget(
+			instantsearch.widgets.refinementList({
+				container: '#' + field_name,
+				operator:'or',
+				attributeName: field_name,	
+				templates:{
+					header:verbose_name,	
+				}
+			})
+		);	
+	}
+
+	function newPriceList(field_name,verbose_name){//generlaized function for the price module, takes same parmamters as others
+		search.addWidget(
+			instantsearch.widgets.priceRanges({
+				container:'#'+field_name,
+				attributeName:field_name,
+				labels:{
+					currency:'$',
+					seperator:'to',
+					button:'Go',	
+				},
+				templates:{
+					header:verbose_name	
+				}
+			})
+		);	
+	}
+
+	function newRangeInput(field_name,verbose_name){//generlaizd ffunction for INTEGER type fields
+		search.addWidget(
+			instantsearch.widgets.rangeInput({
+				container:'#'+field_name,
+				attributeName:field_name,
+				templates:{
+					header:verbose_name,	
+				},
+				labels:{
+					separator:'to',
+					button:'Go',	
+				}
+			})
+		);	
+	}
+
+	//process and generates the proper parameters depending on field
+	//TODO: find better performance alternative
+	{% for field_name, values in attributes.items %}
+		switch ('{{ values.1 }}'){
+			case 'CharField':
+				newRefinementList('{{field_name}}','{{values.0}}');
+				break;
+			case 'IntegerField':
+				newRangeInput('{{field_name}}','{{values.0}}');
+				break;
+			case 'DecimalField':
+				newPriceList('{{field_name}}','{{values.0}}');
+				break;
+		}
+	{% endfor %}	
+
+	//grabs list of values already selected by user
+	//action of "clearing out" values left to clearAll
+	search.addWidget(
+		instantsearch.widgets.currentRefinedValues({
+			container:'#current-refined-values',
+			clearAll:false	
+		})	
+	);
+
+	//clears out refined values
+	search.addWidget(
+		instantsearch.widgets.clearAll({
+			container:'#clear-all',
+			templates:{
+				link:'Reset all parameters'	
+			},
+			autoHideContainer:false
+		})
+	);
 
 	//initializes search box itself
 	search.addWidget(
@@ -82,74 +163,25 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		})
 	);
 
-	//initialize RefinementList
-	//attributeName needs to be abstracted later
-	search.addWidget(
-		instantsearch.widgets.refinementList({
-			container: '#refinement-list',
-			operator:'or',
-			attributeName: 'metal',
-			templates:{
-				header:'Types of Metals',	
-			}
-		})
-	);
-
-	//initialize RefinementList for jewelry type
-	//this also needs to be appropriately abstracted later
-	search.addWidget(
-		instantsearch.widgets.refinementList({
-			container:'#jewelry-types',
-			operator:'or',
-			attributeName:'jewelry_type',
-			templates:{
-				header:'Type of Jewelry',	
-			}	
-		})
-	);
-
-	//widget for price
-	search.addWidget(
-		instantsearch.widgets.priceRanges({
-			container:'#price',
-			attributeName:'price',	
-			labels:{
-				currency:'$',
-				seperator:'to',
-				button:'Go',	
-			},
-			templates:{
-				header:'Price'	
-			}
-		})
-	);
-
-	//widget for size
-	search.addWidget(
-		instantsearch.widgets.rangeInput({
-			container:'#size',
-			attributeName:'size',
-			templates:{
-				header:'Size (mm.)',	
-			},	
-			labels:{
-				separator:'to',
-				button:'Go',	
-			}
-		})
-	);
-
 	//sets up widget to display search results
 	//hackish solution to images: use {% get_media_prefix %} for MEDIA_ROOT and call {{image}}
 	search.addWidget(
 		instantsearch.widgets.hits({
 			container:'#hits',
 			templates:{
-				empty:'no results',
+				empty:'Mo Results',
 				//PROBLEM: size and price are not searchable
-				//item:generate({% verbatim %}{{ObjectID}}{% endverbatim %})
-				item:{% verbatim %}'<em>Hit {{objectID}}</em>: <a href = {% endverbatim %}"{{metal_url_specific}}">{% verbatim %}{{{_highlightResult.metal.value}}} {{{_highlightResult.jewelry_type.value}}}, {{size}} mm., ${{price}}<img src ={% endverbatim %} "{% get_media_prefix %}{% verbatim %}{{image}}"></a>' {% endverbatim %} //need to address ObjectID problem
+				item:document.getElementById('hit-template').innerHTML
 			}	
+		})
+	);
+	
+	//sets up widget for pagination
+	search.addWidget(
+		instantsearch.widgets.pagination({
+			container:'#pagination',
+			maxPages:20,
+			scrollTo:false
 		})
 	);
 
