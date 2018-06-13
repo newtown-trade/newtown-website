@@ -29,20 +29,20 @@
 		<nav class = "navbar navbar-light navbar-expand-md menu-colorin justify-content-between">
 
 			<!--TODO: add logo in navbar-brand-->
-			<a class = "navbar-brand" href = "#">Newtown Trade</a>
+			<a class = "navbar-brand" href = "/">Newtown Trade</a>
 			<ul class ="navbar-nav">
 				<li class = "nav-item"> 
 					<a class = "nav-link" href = "#">About Us</a>
 				</li>
 				<li class = "nav-item dropdown">
-					<a class = "nav-link dropdown-toggle" href = "#" id = "navbardrop" data-toggle="dropdown">Jewelry</a>
+					<a class = "nav-link dropdown-toggle" href = "{% url 'jewelry:index' %}" id = "navbardrop" data-toggle="dropdown">Jewelry</a>
 					<div class = "dropdown-menu">
-						<a class="dropdown-item" href="#">Earrings, Nose Hooks, Bracelets</a>
-						<a class="dropdown-item" href="#">Contact Lenses</a>
+						<a class="dropdown-item" href="{% url 'jewelry:metals' %}">Earrings, Nose Hooks, Bracelets</a>
+						<a class="dropdown-item" href="{% url 'jewelry:contactLense' %}">Contact Lenses</a>
 					</div>
 				</li>
 				<li class = "nav-item">
-					<a class = "nav-link" href = "#">Displays</a>
+					<a class = "nav-link" href = "{% url 'jewelry:display' %}">Displays</a>
 				</li>
 				<li class = "nav-item">
 					<a class = "nav-link" href = "#">Contact Us</a>
@@ -58,7 +58,9 @@
 			<div class = "container-fluid text-center"><h1>Attractive Jewelry at an Affordable Cost</h1></div>
 		</div>
 
+		{% block body_nocontainer %}
 		<div class = "container">
+			{% block body_container %}
 			<div class = "row">
 				<!-- TODO: make this text vertically aligned-->
 				<div class = "col-md-8 text-right my-auto">
@@ -83,7 +85,7 @@
 						<div class = "list-group-item">Test Item</div>
 						<div class = "list-group-item">Test Item</div>
 					</div>
-					<h3 class = "text-center" style = "padding:1rem"><a href = "#" class = "links">See More</a></h3>
+					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:metals' %}" class = "links">See More</a></h3>
 				</div>
 				<div class = "col-md-6">
 					<h2 class = "text-center header-colorin">Contact Lenses</h2>
@@ -93,13 +95,15 @@
 						<div class = "list-group-item">Test Item</div>
 						<div class = "list-group-item">Test Item</div>
 					</div>
-					<h3 class = "text-center" style = "padding:1rem"><a href = "" class = "links">See More</a></h3>
+					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:contactLense' %}" class = "links">See More</a></h3>
 				</div>
 			</div>
+			<!-- TODO: add photo gallery here or something -->
+			<h1 class = "text-center" style = "padding:1rem">Visit our Full Inventory <a href = "#" class = "links">Here!</a></h1>
+			{% endblock %}
 		</div>
+		{% endblock %}
 
-		<!-- TODO: add photo gallery here or something -->
-		<h1 class = "text-center" style = "padding:1rem">Visit our Full Inventory <a href = "#" class = "links">Here!</a></h1>
 
 		<!-- FOOTER -->
 		<!-- consider adding (another) full item search here -->
