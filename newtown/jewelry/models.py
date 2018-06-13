@@ -44,7 +44,10 @@ class Display(models.Model):
 	full_price = models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Price of Entire Display")
 	length=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Length of Board (mm.)")
 	width=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Width of Board (mm.)")
+	image = models.ImageField(upload_to='display/', null=True, verbose_name = "Image of Display") #TODO: create specialized folders for display after input from dad
 
+	def __str__(self):
+		return self.name + ', ' + str(self.length) + ' mm. X ' + str(self.width) + ' mm., $' + str(self.full_price)
 #class for Contact Lenses
 #separated because totally different stats
 class ContactLense(models.Model):
