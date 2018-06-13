@@ -13,8 +13,13 @@
 .menu-colorin {
   background-color: #00C9A9; }
 
+.links {
+  color: #472480; }
+
 #footer {
   margin-bottom: 0;
   padding-bottom: 1rem; }
   #footer a {
     color: #472480; }
+  #footer #row {
+    margin: auto; }

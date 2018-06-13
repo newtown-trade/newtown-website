@@ -25,7 +25,7 @@
 		<!-- header -->
 
 		<!-- make navabar collapsable later for mobile support -->
-		<nav class = "navbar navbar-light navbar-expand-md menu-colorin">
+		<nav class = "navbar navbar-light navbar-expand-md menu-colorin justify-content-between">
 
 			<!--TODO: add logo in navbar-brand-->
 			<a class = "navbar-brand" href = "#">Newtown Trade</a>
@@ -47,7 +47,10 @@
 					<a class = "nav-link" href = "#">Contact Us</a>
 				</li>
 			</ul>	
-			<!-- TODO: add search bar for full algolia search-->
+			<form class = "form-inline my-2 my-lg-0" action = "#">
+				<input class = "form-control mr-sm-2" type = "text" placeholder = "Search for Items">
+				<button class = "btn btn-info my-sm-0" type = "submit">Submit</button>
+			</form>
 		</nav>
 
 		<div class = "jumbotron jumbotron-fluid d-flex align-items-center" id = "hero-banner">
@@ -79,7 +82,7 @@
 						<div class = "list-group-item">Test Item</div>
 						<div class = "list-group-item">Test Item</div>
 					</div>
-					<h3 class = "text-center" style = "padding:1rem">See More</h3>
+					<h3 class = "text-center" style = "padding:1rem"><a href = "#" class = "links">See More</a></h3>
 				</div>
 				<div class = "col-md-6">
 					<h2 class = "text-center header-colorin">Contact Lenses</h2>
@@ -89,13 +92,13 @@
 						<div class = "list-group-item">Test Item</div>
 						<div class = "list-group-item">Test Item</div>
 					</div>
-					<h3 class = "text-center" style = "padding:1rem">See More</h3>
+					<h3 class = "text-center" style = "padding:1rem"><a href = "" class = "links">See More</a></h3>
 				</div>
 			</div>
 		</div>
 
 		<!-- TODO: add photo gallery here or something -->
-		<h1 class = "text-center" style = "padding:1rem">Visit our Full Inventory <a href = "">Here!</a></h1>
+		<h1 class = "text-center" style = "padding:1rem">Visit our Full Inventory <a href = "#" class = "links">Here!</a></h1>
 
 		<!-- FOOTER -->
 		<!-- consider adding (another) full item search here -->
@@ -107,10 +110,14 @@
 					<a href = "#" style = "padding:1rem"><i class="fas fa-inbox"></i> Contact Us </a>
 					<a href = "" style = "padding:1rem"><i class="fas fa-phone-square"></i> 917-538-9504 </a>
 				</h3>
-			</div>
-			<div class = "row">
+				<div class = "row">
 				<div class = "col-md-6 text-right">
 					<h2>Sign up to recieve updates!</h2>
+					<form class = "form-inline float-right" action = "#">
+						<input class = "form-control mr-sm-2" type = "text" placeholder="email@example.com">
+						<button class = "btn btn-info" type = "submit">Submit</button>
+					</form>
+
 					<!-- TODO: insert form generation using Django later-->
 					<!--TODO: improve this with best practices -->
 				</div>
@@ -125,6 +132,8 @@
 			</div>
 			<!-- TODO: make 2018 generated -->
 			<p class = "text-center">© 2018 Newtown Trade. All Rights Reserved.</p>
+
+			</div>
 		</div>
 	</body>
 

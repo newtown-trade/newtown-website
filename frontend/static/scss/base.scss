@@ -13,11 +13,16 @@ $header-color:#4C8076;
 .menu-colorin{
 	background-color:$menu-color;	
 }
-
+.links{
+	color:$tertiary-color;	
+}
 #footer{
 	margin-bottom:0; 
 	padding-bottom:1rem;
 	a{
 		color:$tertiary-color;	
+	}
+	#row{
+		margin:auto;	
 	}
 }
