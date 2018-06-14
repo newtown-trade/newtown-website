@@ -6,4 +6,7 @@ class Contact(models.Model):
 	title= models.CharField(max_length=50)
 	message = models.TextField()
 	timestamp = models.DateTimeField()
+	
+	def __str__(self):
+		return self.name+ ', ' + self.email + ': ' + self.title
 # Create your models here.
