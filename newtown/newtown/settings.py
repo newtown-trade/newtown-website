@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'jewelry.apps.JewelryConfig',
 	'algoliasearch_django',
 	'django_cleanup', #deletes old images
+	'contact.apps.ContactConfig',
 ]
 
 #settings for algolia search application
