@@ -63,7 +63,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 {% comment %}a template for all the hits. the specific jewelry files will take it from here {% endcomment %}
 	<div class = "hit">
 		<div class = "hit-image">
-			<img src = "{% block hit_image %}{% endblock %}">
+			<img src = "{% block hit_image %}{% endblock %}" class = "img-fluid">
 		</div>	
 		<div class = "hit-content">
 			<h2><a href = "{{specific_url}}">{% block hit_header %} {% endblock %}</a></h2>
