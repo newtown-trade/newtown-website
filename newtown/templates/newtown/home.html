@@ -81,10 +81,9 @@
 				<div class = "col-md-6">
 					<h2 class = "text-center header-colorin">Earrings, Nose Hooks, Bracelets</h1>
 					<div class = "list-group text-right">
-						<!-- add a {for} loop thing here -->
-						<div class = "list-group-item">Test Item</div>
-						<div class = "list-group-item">Test Item</div>
-						<div class = "list-group-item">Test Item</div>
+						{% for item in metal_latest %}
+							<div class = "list-group-item">{{ item }}</div>
+						{% endfor %}
 					</div>
 					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:metals' %}" class = "links">See More</a></h3>
 				</div>
@@ -92,9 +91,9 @@
 					<h2 class = "text-center header-colorin">Contact Lenses</h2>
 					<div class = "list-group">
 						<!-- add a {for} loop thing here -->
-						<div class = "list-group-item">Test Item</div>
-						<div class = "list-group-item">Test Item</div>
-						<div class = "list-group-item">Test Item</div>
+						{% for item in contactLense_latest %}
+							<div class = "list-group-item">{{ item }}</div>
+						{% endfor %}
 					</div>
 					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:contactLense' %}" class = "links">See More</a></h3>
 				</div>

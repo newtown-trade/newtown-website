@@ -74,7 +74,7 @@ class ContactLense(models.Model):
 	size=models.IntegerField(default=0,verbose_name='Size (mm.)')
 	price=models.DecimalField(max_digits=6,decimal_places=2,verbose_name='Price')
 	image = models.ImageField(upload_to=upload_lense,null=True)
-	timestampe=models.DateTimeField(default=timezone.now)
+	timestamp=models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return self.color + ' Lense, ' + str(self.size) + ' mm.'
