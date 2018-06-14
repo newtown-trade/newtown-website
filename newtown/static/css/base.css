@@ -45,3 +45,9 @@
   border-radius: 50%; }
   .circle-select i:hover {
     background-color: #649CEE; }
+
+.hit-decorate {
+  border: 1px solid #4C8076;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem; }

@@ -22,8 +22,6 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		</div>
 		<h3><a href="{% url 'jewelry:index' %}">Back to Jewelry</a></h3>
 
-		
-
 		<div class = "row">
 			<div class = "col-md-3">
 				<div id="search-box" style = "margin-bottom:1rem;">
@@ -49,11 +47,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 				<div id="hits">
 				  <!-- Hits widget will appear here -->
 				</div>
-
-				<div id = "pagination">
-					<!-- pagination goes here -->
-				</div>
+				
 			</div>
+		</div>
+		<div id = "pagination" class = "text-center">
+			<!-- pagination goes here -->
 		</div>
 	</div>
 {% endblock %}
@@ -61,11 +59,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 {% block javascript %}
 <script id = "hit-template">
 {% comment %}a template for all the hits. the specific jewelry files will take it from here {% endcomment %}
-	<div class = "hit">
-		<div class = "hit-image">
+	<div class = "row hit-decorate">
+		<div class = "col-sm-6 text-center my-3">
 			<img src = "{% block hit_image %}{% endblock %}" class = "img-fluid">
 		</div>	
-		<div class = "hit-content">
+		<div class = "col-sm-6 text-middle my-auto">
 			<h2><a href = "{{specific_url}}">{% block hit_header %} {% endblock %}</a></h2>
 			{% block hit_details %}{% endblock %}
 		</div>
