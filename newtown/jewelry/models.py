@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 #additional classes/fields will be implemented depending on production needs
 
@@ -25,6 +26,7 @@ class Metal(models.Model):
 	metal = models.CharField(max_length=50, choices=METAL_CHOICES,default=GOLD,verbose_name="Type of Metals")
 	price = models.DecimalField(max_digits=6,decimal_places=2,verbose_name="Price")
 	image = models.ImageField(upload_to=upload_metal,null=True)
+	timestamp = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		output = self.metal + ' ' + self.jewelry_type + ', ' + str(self.size) + ' mm.'
@@ -49,6 +51,7 @@ class Display(models.Model):
 	length=models.IntegerField(default=0,verbose_name="Length of Board (mm.)")
 	width=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Width of Board (mm.)")
 	image = models.ImageField(upload_to='display/', null=True, verbose_name = "Image of Display") #TODO: create specialized folders for display after input from dad
+	timestamp = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return self.name + ', ' + str(self.length) + ' mm. X ' + str(self.width) + ' mm., $' + str(self.full_price)
@@ -71,6 +74,7 @@ class ContactLense(models.Model):
 	size=models.IntegerField(default=0,verbose_name='Size (mm.)')
 	price=models.DecimalField(max_digits=6,decimal_places=2,verbose_name='Price')
 	image = models.ImageField(upload_to=upload_lense,null=True)
+	timestampe=models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return self.color + ' Lense, ' + str(self.size) + ' mm.'

@@ -11,7 +11,7 @@ def generate_context(get_field_result,model_name,specific_method,display_name):
 	#parses out and obtains field types
 	attributes = {}
 	for i in get_field_result:
-		if i.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField']:
+		if i.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField','DateTimeField']:
 			attributes[i.name]=[i.verbose_name,str(i.get_internal_type())]
 
 	#generates the item-specific urls
@@ -31,7 +31,7 @@ def get_specific_item(specific_item, url_to_full_list):
 	image_url=''
 	for i in specific_item._meta.get_fields():
 		#grabs value for majority of indexable fields
-		if i.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField']:		
+		if i.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField','DateTimeField']:		
 			item_attributes[str(i.verbose_name)]=str(getattr(specific_item,str(i.name)))
 		#separately grabs URL to image and pipes it to optional entry in context
 		elif i.get_internal_type() in ['FileField','ImageField']:
