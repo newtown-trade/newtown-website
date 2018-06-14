@@ -36,6 +36,10 @@ class Metal(models.Model):
 		self.jewelry_type = self.jewelry_type.title()
 		super(Metal,self).save(*args,**kwargs)
 
+	class Meta:
+		verbose_name='Earring, Nose Hook, Bracelet' #this will need to expand later		
+		verbose_name_plural= 'Earrings, Nose Hooks, Bracelets'
+
 #class for jewelry display
 #need: length, width, total 
 class Display(models.Model):
@@ -48,6 +52,10 @@ class Display(models.Model):
 
 	def __str__(self):
 		return self.name + ', ' + str(self.length) + ' mm. X ' + str(self.width) + ' mm., $' + str(self.full_price)
+	class Meta:
+		verbose_name='Display'
+		verbose_name_plural="Displays"
+
 #class for Contact Lenses
 #separated because totally different stats
 class ContactLense(models.Model):

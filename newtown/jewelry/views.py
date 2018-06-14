@@ -5,8 +5,8 @@ from django.urls import reverse
 from .models import *
 #need to write generic view for specific metals and for specific materials
 
-#given a Model's raw get_field result, its name par apps.py and its specific method, returns the required context
-def generate_context(get_field_result,model_name,specific_method):
+#given a Model's raw get_field result, its name par apps.py, its specific method, and the display name from the admin, returns the required context
+def generate_context(get_field_result,model_name,specific_method,display_name):
 
 	#parses out and obtains field types
 	attributes = {}
@@ -18,7 +18,7 @@ def generate_context(get_field_result,model_name,specific_method):
 	specific_url = reverse('jewelry:'+specific_method,args=[1337]).replace('1337','{{objectID}}')
 
 	#returns the context to be fed into the view
-	return {'specific_url':specific_url,'model_name':model_name,'attributes':attributes}
+	return {'specific_url':specific_url,'model_name':model_name,'attributes':attributes, 'display_name':display_name}
 
 #WARNING: code will change if multiple images
 #given a specific item requested via pk and a url back to the full list, dynamically generates a profile for item and returns context
@@ -48,19 +48,19 @@ def index(request):
 	return render(request,'jewelry/jewelry_root.html',{})
 
 def metals(request):
-	return render(request,'jewelry/metal.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific'))
+	return render(request,'jewelry/metal.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific',Metal._meta.verbose_name_plural))
 	#return render(request, 'jewelry/jewelry_list.html',{'metal_url_specific':metal_specific_url,'model_name':model_name,'attributes':attributes}) 
 
 def metal_specific(request,metal_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Metal,pk=metal_id),reverse('jewelry:metals'))) #see comments for get_specific_item
 
 def contactLense(request):
-	return render(request,'jewelry/contactLense.html',generate_context(ContactLense._meta.get_fields(),ContactLense.__name__,'contactLenseSpecific'))
+	return render(request,'jewelry/contactLense.html',generate_context(ContactLense._meta.get_fields(),ContactLense.__name__,'contactLenseSpecific',ContactLense._meta.verbose_name_plural))
 def contactLenseSpecific(request,contactLense_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(ContactLense,pk=contactLense_id),reverse('jewelry:contactLense')))
 
 def display(request):
-	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific'))
+	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific',Display._meta.verbose_name_plural))
 def displaySpecific(request,display_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Display,pk=display_id),reverse('jewelry:display')))
 
