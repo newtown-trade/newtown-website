@@ -42,10 +42,12 @@ v0.5
 -integrate frontend with backend[IN PROGRESS]
 
 -create a logo and attach as favicon
--integrate UI with item-specific results
+-integrate UI with item-specific results[DONE]
+-stylize item list better
 -get universal search working
 -get contact us working
 -get sign up for updates working
+-get list of most recent submissions to show on homepage
 
 
 -first release to dad
