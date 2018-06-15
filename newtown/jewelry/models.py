@@ -45,7 +45,7 @@ class Metal(models.Model):
 #class for jewelry display
 #need: length, width, total 
 class Display(models.Model):
-	name=models.CharField(max_length=50,default="name")
+	name=models.CharField(max_length=50,default="name",verbose_name="Name of Display")
 	jewelryset = models.ManyToManyField(Metal,verbose_name="Jewelry in Display")
 	full_price = models.IntegerField(default=0,verbose_name="Price of Entire Display")
 	length=models.IntegerField(default=0,verbose_name="Length of Board (mm.)")
