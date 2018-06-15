@@ -5,4 +5,5 @@ class DisplayAdmin(admin.ModelAdmin):
 admin.site.register(Metal)
 admin.site.register(Display,DisplayAdmin)
 admin.site.register(ContactLense)
+admin.site.site_header="Newtown Trade Site Administration"
 # Register your models here.
