@@ -12,5 +12,7 @@ class Contact(models.Model):
 
 class EmailResponse(models.Model):
 	email = models.EmailField(max_length=50)
-	timestamp = models.DateTimeField()
+
+	def __str__(self):
+		return self.email
 # Create your models here.

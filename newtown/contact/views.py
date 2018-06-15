@@ -22,8 +22,20 @@ def index(request):
 			#constructs and sends email to email
 			#TODO: set up mail server + make actual email newtown0312@
 			send_mail('[MESSAGE FROM \'CONTACT US\']: ' + contact.title,contact.message,contact.email,['leebr1@bxscience.edu'])
-			return redirect('contact_submit')
+			return redirect('contact:contact_submit')
 	else:
 		form = ContactForm()
 	return render(request,'contact/contact_form.html',{'form':form})
-# Create your views here.
+
+#form processor for email signups
+def email_signup(request):
+	if request.method == 'POST':
+		email_signup = EmailForm(request.POST)
+		if email_signup.is_valid():
+			email = email_signup.save(commit=False)
+			email.timestamp = timezone.now()
+			email.save()
+			print('saved!')
+	else:
+		email_form=EmailForm()
+	return redirect('contact:contact_submit')
