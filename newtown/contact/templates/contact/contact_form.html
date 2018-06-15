@@ -1,5 +1,10 @@
-<h1>Contact Us</h1>
-<form method = "POST" class = "post-form">{% csrf_token %}
-	{{ form.as_p }}
-	<button type = "submit">Submit</button
-</form>
+{% extends 'newtown/home.html' %}
+{% block body_nocontainer %}
+	<div class = "container">
+		<div class = "jumbotron header-colorin-bigger"><h1>Contact Us</h1></div>
+		<form method = "POST" class = "post-form">{% csrf_token %}
+			{{ form.as_p }}
+			<button type = "submit">Submit</button>
+		</form>
+	</div>
+{% endblock %}

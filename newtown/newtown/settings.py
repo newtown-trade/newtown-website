@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 	'algoliasearch_django',
 	'django_cleanup', #deletes old images
 	'contact.apps.ContactConfig',
+	'bootstrap4', #generates bootstrap 4 forms
 ]
 
 #settings for algolia search application
