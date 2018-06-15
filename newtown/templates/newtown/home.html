@@ -28,7 +28,7 @@
 		<!-- header -->
 
 		<!-- make navabar collapsable later for mobile support -->
-		<nav class = "navbar navbar-light navbar-expand-md menu-colorin justify-content-between">
+		<nav class = "navbar navbar-light navbar-expand-md menu-colorin justify-content-between" id = "nav">
 
 			<!--TODO: add logo in navbar-brand-->
 			<a class = "navbar-brand" href = "/">Newtown Trade</a>
@@ -56,6 +56,7 @@
 			</form>
 		</nav>
 
+		<div id = "body-midsection">
 		{% block body_nocontainer %}
 		<div class = "jumbotron jumbotron-fluid d-flex align-items-center" id = "hero-banner">
 			<div class = "container-fluid text-center"><h1>Attractive Jewelry at an Affordable Cost</h1></div>
@@ -102,10 +103,12 @@
 			<h1 class = "text-center" style = "padding:1rem">Visit our Full Inventory <a href = "{% url 'jewelry:index' %}" class = "links">Here!</a></h1>
 		</div>
 		{% endblock %}
+		</div>
 
 
 		<!-- FOOTER -->
 		<!-- consider adding (another) full item search here -->
+		<footer id = "footer-root">
 		<div class = "jumbotron jumbotron-fluid menu-colorin" id = "footer">
 			<div class = "container-fluid">
 				<h1 class = "text-center">Reach out to us with any questions!</h1>
@@ -139,11 +142,15 @@
 
 			</div>
 		</div>
+		</footer>
 	</body>
 
 	<!--Javscript-->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<script>
+		$('#footer-root').css('margin-top',$(document).height()-($('#nav').height()+$('#body-midsection').height()+$('#footer-root').height()));
+	</script>
 	{% block javascript %}{% endblock %}
 </html>

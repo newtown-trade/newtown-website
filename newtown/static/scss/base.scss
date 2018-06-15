@@ -3,6 +3,9 @@ $menu-color: #00C9A9;
 $secondary-color: #C4FCF0;
 $header-color:#4C8076;
 
+body{
+	min-height:100vh;	
+}
 .header-colorin{
 	color:white;
 	background-color:$header-color;	
