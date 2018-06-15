@@ -1,10 +1,14 @@
 {% extends 'newtown/home.html' %}
+{% load bootstrap4 %}
+
 {% block body_nocontainer %}
 	<div class = "container">
 		<div class = "jumbotron header-colorin-bigger"><h1>Contact Us</h1></div>
 		<form method = "POST" class = "post-form">{% csrf_token %}
-			{{ form.as_p }}
-			<button type = "submit">Submit</button>
+			{% bootstrap_form form %}
+			{% buttons %}
+				<button type = "submit" class = "btn btn-primary">Submit</button>
+			{% endbuttons %}
 		</form>
 	</div>
 {% endblock %}

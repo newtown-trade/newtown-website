@@ -7,7 +7,7 @@ from .forms import *
 #output from contact us
 #TODO: make this an actual template lol
 def contact_submit(request):
-	return HttpResponse("tha")
+	return render(request,'contact/contact_reciept.html',{})
 
 #view for Contact Us
 def index(request):
