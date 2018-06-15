@@ -5,7 +5,8 @@ MOVE HEADER TO GENERIC TEMPLATE
 MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 {% endcomment %}
 
-
+{# display_name is changed by modifying verbose_name in models.py #}
+{% block titlehead %}{{display_name}}{% endblock %}
 {% block csshead %}
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4/dist/instantsearch.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.4"></script>
