@@ -9,4 +9,8 @@ class Contact(models.Model):
 	
 	def __str__(self):
 		return self.name+ ', ' + self.email + ': ' + self.title
+
+class EmailResponse(models.Model):
+	email = models.EmailField(max_length=50)
+	timestamp = models.DateTimeField()
 # Create your models here.
