@@ -38,10 +38,10 @@ v0.5
 
 -create homepage frontend[DONE]
 -create jewelry homepage frontend[DONE]
--create flatpages (e.g. about us, terms of use)
--integrate frontend with backend[IN PROGRESS]
+-create flatpages (e.g. about us, terms of use)[POSTPONED TO 0.6]
+-integrate frontend with backend[DONE]
 
--create a logo and attach as favicon[POSTPONED FOR 0.6]
+-create a logo and attach as favicon[DONE]
 -integrate UI with item-specific results[DONE]
 -stylize item list better[DONE]
 -get universal search working[POSTPONED FOR 0.6]
@@ -49,7 +49,11 @@ v0.5
 -get sign up for updates working[DONE]
 -get list of most recent submissions to show on homepage[DONE]
 
--first release to dad
+-first release proposal to dad
+
+v0.5.1
+-requested fixes from dad
+-NO NEW FEATURES UNTIL 0.6
 
 v0.6
 -sitemap
