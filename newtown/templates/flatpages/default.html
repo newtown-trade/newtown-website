@@ -3,6 +3,6 @@
 {% block body_nocontainer %}
 	<div class = "container">
 		<div class = "jumbotron header-colorin-bigger"><h1>{{ flatpage.title }}</h1></div>
-		{{ flatpage.content }}
+		{{ flatpage.content|safe|linebreaks }}
 	</div>
 {% endblock %}
