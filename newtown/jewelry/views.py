@@ -29,6 +29,7 @@ def get_specific_item(specific_item, url_to_full_list):
 	#note: different dictionary structure than generate_context
 	item_attributes = {}
 	image_url=''
+
 	for i in specific_item._meta.get_fields():
 		#grabs value for majority of indexable fields
 		if i.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField','DateTimeField']:		
@@ -36,6 +37,10 @@ def get_specific_item(specific_item, url_to_full_list):
 		#separately grabs URL to image and pipes it to optional entry in context
 		elif i.get_internal_type() in ['FileField','ImageField']:
 			image_url=getattr(getattr(specific_item,str(i.name)),'url')
+		#code to catch ManyToManyFields
+		#implement this in v0.6
+		#elif i.get_internal_type() == 'ManyToManyField':
+			#print(i.get_internal_type())
 
 	#compiles context to return and optionally stacks image on top
 	attributes={'specific_item':specific_item,'url_to_full_list':url_to_full_list,'item_attributes':item_attributes}
