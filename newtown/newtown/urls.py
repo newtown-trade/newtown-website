@@ -17,12 +17,19 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.flatpages import views as flat_views
 
 from . import views
+
+#NOTE: flatpages are stored in DB ONLY and need to be manually exported into production
+#also means Django DB needs to be seriously backed up
 
 urlpatterns = [
 	url(r'^$',views.index,name='index'),
     url(r'^admin/', admin.site.urls),
 	url(r'^jewelry/', include('jewelry.urls')),
 	url(r'^contact/',include('contact.urls')),
+	url(r'^about/$',flat_views.flatpage,{'url':'/about/'},name='about'),
+	url(r'^terms_of_use/$',flat_views.flatpage,{'url':'/terms_of_use/'},name='terms_of_use'),
+	url(r'^privacy_policy/$',flat_views.flatpage,{'url':'/privacy_policy/'},name='privacy_policy'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -42,7 +42,11 @@ INSTALLED_APPS = [
 	'django_cleanup', #deletes old images
 	'contact.apps.ContactConfig',
 	'bootstrap4', #generates bootstrap 4 forms
+	'django.contrib.sites',
+	'django.contrib.flatpages',
 ]
+
+SITE_ID=1
 
 #settings for algolia search application
 #will need to re-enter keys as environment variables in production
@@ -60,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'newtown.urls'
