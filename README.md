@@ -9,7 +9,7 @@ Before forking this repo, please make sure you have a working instance of Python
 
 2. `pip install virtualenv` for a virtual environment.
 
-3. `cd` into the repo, and `pip install -r requirements.txt` to get all dependencies. (includes touhou)
+3. `cd` into the repo, and `pip install -r requirements.txt` to get all dependencies. (includes django) **Sass** is an additional dependency that is not covered by `pip`. Please install it via the way you please.
 
 4. Run `python manage.py migrate` to generate database tables.
 
@@ -23,4 +23,4 @@ Before forking this repo, please make sure you have a working instance of Python
 
 7. After you have test data that sastisfies you, run `python manage.py algolia_applysettings` and `python manage.py algolia_reindex` to sync your Algolia app with Django's databases.
 
-If anything goes wrong, please flag it in Issues.
+If anything goes wrong, please flag it in Issues. 
