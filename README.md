@@ -19,7 +19,7 @@ Before forking this repo, please make sure you have a working instance of Python
 * `ALGOLIAAPI` set to your Algolia App's API
 * `ALGOLIAAPP` set to your Algolia APP's app ID
 
-6. Run `python manage.py runserver` to start the test server. Note that as of `v0.6`, fixtures have not been immplemented. As such, you'll need to manually add test data to ensure all parts of site load properly. 
+6. Run `python manage.py runserver` to start the test server. Note that as of `v0.5`, fixtures have not been immplemented. As such, you'll need to manually add test data to ensure all parts of site load properly. 
 
 7. After you have test data that sastisfies you, run `python manage.py algolia_applysettings` and `python manage.py algolia_reindex` to sync your Algolia app with Django's databases.
 
