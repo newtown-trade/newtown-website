@@ -82,3 +82,13 @@ class ContactLense(models.Model):
 	class Meta:
 		verbose_name='Contact Lense'
 		verbose_name_plural='Contact Lenses'
+
+#the master test class that tests the proposed new system
+class MasterTest(models.Model):
+	j_type=models.CharField(max_length=25,verbose_name="J Type")
+class TestA(models.Model):
+	numberA=models.IntegerField(default=0,verbose_name="Number A")
+	MasterTest=models.OneToOneField(MasterTest,on_delete=models.CASCADE)
+class TestB(models.Model):
+	numberB=models.IntegerField(default=0,verbose_name="Number B")
+	MasterTest=models.OneToOneField(MasterTest,on_delete=models.CASCADE)
