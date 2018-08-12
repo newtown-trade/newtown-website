@@ -1,7 +1,18 @@
 from django.db import models
 from django.utils import timezone
 
-#additional classes/fields will be implemented depending on production needs
+'''
+additional classes/fields will be implemented depending on production needs
+
+CLASS STUCTURE TO FOLLOW:
+
+class JewelryType(models.Model):
+	style='[INSERT FIELD TO APPEAR ON NAVBAR]'
+
+	everything else
+
+
+'''
 
 #returns dynamic image folder structure for Metal
 def upload_metal(instance,filename):
@@ -10,6 +21,8 @@ def upload_metal(instance,filename):
 def upload_lense(instance,filename):
 	return 'contactLense/%s/%s' % (instance.color,filename)
 class Metal(models.Model):
+	style='metal'
+
 	GOLD = 'Gold'
 	SILVER = 'Silver'
 	BRONZE = 'Bronze'
@@ -62,6 +75,8 @@ class Display(models.Model):
 #class for Contact Lenses
 #separated because totally different stats
 class ContactLense(models.Model):
+	style='color'
+
 	COLORS = (
 		('Purple','Purple'),
 		('Blue','Blue'),

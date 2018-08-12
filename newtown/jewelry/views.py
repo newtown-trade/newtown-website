@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.db.models import Max, Min
 from django.urls import reverse
 from .models import *
+import jewelry.models as jewelry_models
+import inspect
+
 #need to write generic view for specific metals and for specific materials
 
 #given a Model's raw get_field result, its name par apps.py, its specific method, and the display name from the admin, returns the required context
@@ -69,3 +72,11 @@ def display(request):
 def displaySpecific(request,display_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Display,pk=display_id),reverse('jewelry:display')))
 
+def style(request,jewelry_type,jewelry_style):
+	for name,obj in inspect.getmembers(jewelry_models):
+		print(obj.__name__)
+		if inspect.isclass(obj) and obj.__name__ == jewelry_type:
+			#todo: fix this problem	
+			parameters = obj.objects.filter(getattr(obj,obj.style)=jewelry_style)
+			return HttpResponse('valid')
+	return HttpResponse('invalid')

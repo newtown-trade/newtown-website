@@ -9,10 +9,11 @@ urlpatterns = [#need to write generic view for specific metals and for specific 
 	url(r'^display/$',views.display,name="display"),
 	url(r'^display/(?P<display_id>[0-9]+)/$',views.displaySpecific,name="displaySpecific"),
 	url(r'^contactLense/$',views.contactLense,name="contactLense"),
-	url(r'^contactLense/(?P<contactLense_id>[0-9]+)/$',views.contactLenseSpecific,name="contactLenseSpecific")
+	url(r'^contactLense/(?P<contactLense_id>[0-9]+)/$',views.contactLenseSpecific,name="contactLenseSpecific"),
 	#url(r'^silver/$',views.silver, name='silver'),
 	#url(r'^bronze/$',views.bronze, name='bronze'),
 	#url(r'^steel/$',views.steel, name='steel'),
+	url(r'^(?P<jewelry_type>[A-Za-z0-9]+)/(?P<jewelry_style>[A-Za-z0-9]+)/$',views.style,name="style")
 
 
 ]

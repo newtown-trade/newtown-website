@@ -37,13 +37,19 @@
 				<li class = "nav-item"> 
 					<a class = "nav-link" href = "{% url 'about' %}">About Us</a>
 				</li>
+				{# displays each jewlery type's verbose_name (as decided in Meta) along with valid styles #}
+				{% for jewelry_meta_name,style_items in jewelry_classes.items %}
 				<li class = "nav-item dropdown">
-					<a class = "nav-link dropdown-toggle" href = "{% url 'jewelry:index' %}" id = "navbardrop" data-toggle="dropdown">Jewelry</a>
+					<a class = "nav-link dropdown-toggle" href = "#" id = "navbardrop" data-toggle="dropdown">{{jewelry_meta_name}}</a>
 					<div class = "dropdown-menu">
-						<a class="dropdown-item" href="{% url 'jewelry:metals' %}">Earrings, Nose Hooks, Bracelets</a>
-						<a class="dropdown-item" href="{% url 'jewelry:contactLense' %}">Contact Lenses</a>
+						{# ieterates through jewelry type's styles and constructs urls for each #}
+						{% for style in style_items.0 %}
+							<a class="dropdown-item" href="{% url 'jewelry:style' jewelry_type=style_items.1 jewelry_style=style %}">{{style}}</a>
+						{% endfor %}
+						{# TODO: add generalized search function #}
 					</div>
 				</li>
+				{% endfor %}
 				<li class = "nav-item">
 					<a class = "nav-link" href = "{% url 'jewelry:display' %}">Displays</a>
 				</li>
