@@ -1,0 +1,11 @@
+{% extends 'newtown/home.html' %}
+{% load static %}
+
+{% block titlehead %}{{ jewelry_item }}{% endblock %}
+
+{% block body_nocontainer %}
+	<div class = "container">
+		<div class = "jumbotron header-colorin-bigger"><h1>{{ jewelry_item }}</h1></div>	
+	</div>	
+{% endblock %}
+

@@ -53,11 +53,12 @@ v0.5
 
 v0.6
 -reconstructed Django admin with ability to edit all options from Jewelry option only
-	-create test setup in new app implementing InLineModelAdmin to test how things go
-	-DESIRED BEHAVIOR: generalized Jewelry model can shape the entire dataset of jewelry
-	-create new generic Jewelry model (e.g. price) and have existing modules link back to it as ForeignKey
-	-adapt Algolia to work with new system
--Display each JEWELRY TYPE as a top header on the navbar, and each JEWELRY STYLE under JEWELRY TYPE as a suboption
+	-create test setup in new app implementing InLineModelAdmin to test how things go[DONE, REJECTED]
+	-DESIRED BEHAVIOR: generalized Jewelry model can shape the entire dataset of jewelry[REJECTED]
+	-create new generic Jewelry model (e.g. price) and have existing modules link back to it as ForeignKey[REJECTED]
+	-adapt Algolia to work with new system[REJECTED]
+-Display each JEWELRY TYPE as a top header on the navbar, and each JEWELRY STYLE under JEWELRY TYPE as a suboption[DONE]
+-Write generalized field details for style_specific
 -Link UNIFORM Displays (i.e. of the same jewelry TYPE and STYLE) with Type/Style pages
 -Algolia system to remain (mostly) intact as secondary system on topheader havbar
 -sitemap
