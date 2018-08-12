@@ -7,7 +7,8 @@ additional classes/fields will be implemented depending on production needs
 CLASS STUCTURE TO FOLLOW:
 
 class JewelryType(models.Model):
-	style='[INSERT FIELD TO APPEAR ON NAVBAR]'
+	
+	jewelry_style = [MODEL TO APPEAR ON NAVBAR]
 
 	everything else
 
@@ -21,8 +22,6 @@ def upload_metal(instance,filename):
 def upload_lense(instance,filename):
 	return 'contactLense/%s/%s' % (instance.color,filename)
 class Metal(models.Model):
-	style='metal'
-
 	GOLD = 'Gold'
 	SILVER = 'Silver'
 	BRONZE = 'Bronze'
@@ -36,13 +35,13 @@ class Metal(models.Model):
 	)	
 	jewelry_type = models.CharField(max_length=50,verbose_name="Type of Jewelry")
 	size = models.IntegerField(default=0,verbose_name="Size (mm.)")#change to float later if necessary, expressed in millimetres
-	metal = models.CharField(max_length=50, choices=METAL_CHOICES,default=GOLD,verbose_name="Type of Metals")
+	jewelry_style = models.CharField(max_length=50, choices=METAL_CHOICES,default=GOLD,verbose_name="Type of Metals")
 	price = models.DecimalField(max_digits=6,decimal_places=2,verbose_name="Price")
 	image = models.ImageField(upload_to=upload_metal,null=True)
 	timestamp = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
-		output = self.metal + ' ' + self.jewelry_type + ', ' + str(self.size) + ' mm.'
+		output = self.jewelry_style + ' ' + self.jewelry_type + ', ' + str(self.size) + ' mm.'
 		return output
 	
 	#standardizes future submissions of jewelry types by automatically capitalizing them
@@ -75,8 +74,6 @@ class Display(models.Model):
 #class for Contact Lenses
 #separated because totally different stats
 class ContactLense(models.Model):
-	style='color'
-
 	COLORS = (
 		('Purple','Purple'),
 		('Blue','Blue'),
@@ -85,14 +82,14 @@ class ContactLense(models.Model):
 		('Orange','Orange'),
 		('Red','Red'),
 	)	
-	color=models.CharField(max_length=50,choices=COLORS,default='Red',verbose_name='Color')
+	jewelry_style=models.CharField(max_length=50,choices=COLORS,default='Red',verbose_name='Color')
 	size=models.IntegerField(default=0,verbose_name='Size (mm.)')
 	price=models.DecimalField(max_digits=6,decimal_places=2,verbose_name='Price')
 	image = models.ImageField(upload_to=upload_lense,null=True)
 	timestamp=models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
-		return self.color + ' Lense, ' + str(self.size) + ' mm.'
+		return self.jewelry_style + ' Lense, ' + str(self.size) + ' mm.'
 
 	class Meta:
 		verbose_name='Contact Lense'

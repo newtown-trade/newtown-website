@@ -72,11 +72,12 @@ def display(request):
 def displaySpecific(request,display_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Display,pk=display_id),reverse('jewelry:display')))
 
-def style(request,jewelry_type,jewelry_style):
+#generalized view for displaying all jewelry of a certain jewelry type's style
+#determines if a class in models.py is a) not Display and b) is the right jewelry
+#jewelry_style is standard on the database level, so that doesn't need to be automated
+def style(request,jewelry_type,jewelry_style_user):
 	for name,obj in inspect.getmembers(jewelry_models):
-		print(obj.__name__)
 		if inspect.isclass(obj) and obj.__name__ == jewelry_type:
-			#todo: fix this problem	
-			parameters = obj.objects.filter(getattr(obj,obj.style)=jewelry_style)
-			return HttpResponse('valid')
+			parameters = obj.objects.filter(jewelry_style=jewelry_style_user)
+			return HttpResponse(str(len(parameters)))
 	return HttpResponse('invalid')

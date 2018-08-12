@@ -44,7 +44,7 @@
 					<div class = "dropdown-menu">
 						{# ieterates through jewelry type's styles and constructs urls for each #}
 						{% for style in style_items.0 %}
-							<a class="dropdown-item" href="{% url 'jewelry:style' jewelry_type=style_items.1 jewelry_style=style %}">{{style}}</a>
+							<a class="dropdown-item" href="{% url 'jewelry:style' jewelry_type=style_items.1 jewelry_style_user=style %}">{{style}}</a>
 						{% endfor %}
 						{# TODO: add generalized search function #}
 					</div>
