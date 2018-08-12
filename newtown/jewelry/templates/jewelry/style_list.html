@@ -1,0 +1,18 @@
+{% extends 'newtown/home.html' %}
+{% load static %}
+{% block titlehead %}{{ jewelry_style_user }}: {{ jewelry_display_name }}{% endblock %}
+
+{# TODO: see if the existing templates can be utilized in some way #}
+{% block body_nocontainer %}
+	<div class = "container">
+		<div class = "jumbotron header-colorin-bigger"><h1>{{ jewelry_style_user }}: {{ jewelry_display_name }}</h1></div>
+		<div class = "row">
+			<div class = "col-md-3">
+				{% for jewelry in jewelry_queryset %}
+					<h3 class = "text-center">{{ jewelry }}</h3>
+					<img src = "{{jewelry.image.url}}" class = "img-fluid">
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

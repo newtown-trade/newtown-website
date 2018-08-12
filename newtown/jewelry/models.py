@@ -9,6 +9,8 @@ CLASS STUCTURE TO FOLLOW:
 class JewelryType(models.Model):
 	
 	jewelry_style = [MODEL TO APPEAR ON NAVBAR]
+	price = [PRICE FIELD FOR MODEL]
+	image = [IMAGE FIELD FOR MODEL]
 
 	everything else
 

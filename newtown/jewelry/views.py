@@ -78,8 +78,8 @@ def displaySpecific(request,display_id):
 def style(request,jewelry_type,jewelry_style_user):
 	for name,obj in inspect.getmembers(jewelry_models):
 		if inspect.isclass(obj) and obj.__name__ == jewelry_type:
-			parameters = obj.objects.filter(jewelry_style=jewelry_style_user)
-			return HttpResponse(str(len(parameters)))
+			jewelry_queryset = obj.objects.filter(jewelry_style=jewelry_style_user)
+			return render(request,'jewelry/style_list.html',{'jewelry_queryset':jewelry_queryset,'jewelry_display_name':obj._meta.verbose_name,'jewelry_style_user':jewelry_style_user})
 
 	#todo: insert generic template here
 	return HttpResponse('invalid')
