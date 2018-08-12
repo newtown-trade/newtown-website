@@ -80,7 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-				'contact.context_processors.email_signup'
+				'contact.context_processors.email_signup',
+				'jewelry.context_processors.navbar_generate'
             ],
         },
     },

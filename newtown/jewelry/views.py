@@ -80,4 +80,6 @@ def style(request,jewelry_type,jewelry_style_user):
 		if inspect.isclass(obj) and obj.__name__ == jewelry_type:
 			parameters = obj.objects.filter(jewelry_style=jewelry_style_user)
 			return HttpResponse(str(len(parameters)))
+
+	#todo: insert generic template here
 	return HttpResponse('invalid')
