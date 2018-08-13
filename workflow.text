@@ -60,8 +60,10 @@ v0.6
 -Display each JEWELRY TYPE as a top header on the navbar, and each JEWELRY STYLE under JEWELRY TYPE as a suboption[DONE]
 -write subhome pages for each JEWELRY TYPE that dynamically display existing jewelry styles[DONE]
 integrate display into dynamic URL
+-display:
+	-envelop display under dynamic URL solution
+	-Link UNIFORM Displays (i.e. of the same jewelry TYPE and STYLE) with Type/Style pages
 -Write generalized field details for style_specific[DONE, SEE ALGOLIA SUBPOINT]
--Link UNIFORM Displays (i.e. of the same jewelry TYPE and STYLE) with Type/Style pages
 -Algolia system to remain (mostly) intact as secondary system on topheader havbar[DONE]
 	-find some way to integrate old method
 -overhaul the frontend
