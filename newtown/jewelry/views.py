@@ -90,6 +90,6 @@ def style_specific(request, jewelry_type, jewelry_style_user,jewelry_id):
 	#parses out appropriate Model -- see class_parser.py
 	obj = class_parser(jewelry_type)
 	if obj is not None:
-		jewelry_item = get_object_or_404(obj,pk=jewelry_id)
-		return render(request,'jewelry/style_specific.html',{'jewelry_item':jewelry_item,'jewelry_type':jewelry_type,'jewelry_style_user':jewelry_style_user})
+		jewelry_item = get_object_or_404(obj,pk=jewelry_id,jewelry_style=jewelry_style_user)
+		return render(request,'jewelry/style_specific.html',{'jewelry_item':jewelry_item,'jewelry_type':jewelry_type,'jewelry_style_user':jewelry_style_user,'jewelry_display_name':obj._meta.verbose_name})
 	return HttpResponse('invalid')

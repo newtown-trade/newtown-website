@@ -6,6 +6,7 @@
 {% block body_nocontainer %}
 	<div class = "container">
 		<div class = "jumbotron header-colorin-bigger"><h1>{{ jewelry_item }}</h1></div>	
+		<h3 class = "pb-1"><a href = "{% url 'jewelry:style' jewelry_type=jewelry_type jewelry_style_user=jewelry_style_user  %}">Back to {{jewelry_style_user}} under {{ jewelry_display_name }}</a></h3>
 	</div>	
 {% endblock %}
 
