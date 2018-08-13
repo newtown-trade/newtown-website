@@ -63,11 +63,15 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 {% comment %}a template for all the hits. the specific jewelry files will take it from here {% endcomment %}
 	<div class = "row hit-decorate">
 		<div class = "col-sm-6 text-center my-3">
-			<img src = "{% block hit_image %}{% endblock %}" class = "img-fluid">
+			{# <img src = "{% block hit_image %}{% endblock %}" class = "img-fluid"> #}
+			<img src = "{% get_media_prefix%}{% verbatim%}{{image}}{% endverbatim %}" class = "img-fluid">
 		</div>	
 		<div class = "col-sm-6 text-middle my-auto">
-			<h2><a href = "{{specific_url}}">{% block hit_header %} {% endblock %}</a></h2>
-			{% block hit_details %}{% endblock %}
+			{% comment %}<h2><a href = "{{specific_url}}">{% block hit_header %} {% endblock %}</a></h2>
+			{% block hit_details %}{% endblock %}{% endcomment %}
+			<h2><a href = "{{specific_url}}">{% verbatim %}{{{_highlightResult.jewelry_style.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}</a></h2>
+			<p>Size: {% verbatim %}{{size}} mm.{% endverbatim %}</p>
+			<p>Price: ${% verbatim %}{{price}}{% endverbatim %}</p>
 		</div>
 	</div>
 </script>

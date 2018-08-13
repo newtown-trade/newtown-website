@@ -17,7 +17,8 @@ def generate_context(get_field_result,model_name,specific_method,display_name):
 			attributes[i.name]=[i.verbose_name,str(i.get_internal_type())]
 
 	#generates the item-specific urls
-	specific_url = reverse('jewelry:'+specific_method,args=[1337]).replace('1337','{{objectID}}')
+	specific_url = (reverse('jewelry:'+specific_method,args=[model_name,177013,1337]).replace('1337','{{objectID}}')).replace('177013','{{jewelry_style}}')
+	print(specific_url)
 
 	#returns the context to be fed into the view
 	return {'specific_url':specific_url,'model_name':model_name,'attributes':attributes, 'display_name':display_name}
@@ -93,3 +94,7 @@ def style_specific(request, jewelry_type, jewelry_style_user,jewelry_id):
 		jewelry_item = get_object_or_404(obj,pk=jewelry_id,jewelry_style=jewelry_style_user)
 		return render(request,'jewelry/style_specific.html',{'jewelry_item':jewelry_item,'jewelry_type':jewelry_type,'jewelry_style_user':jewelry_style_user,'jewelry_display_name':obj._meta.verbose_name})
 	return HttpResponse('invalid')
+
+def search(request,jewelry_type):
+	obj = class_parser(jewelry_type)
+	return render(request,'jewelry/jewelry_list.html',generate_context(obj._meta.get_fields(),obj.__name__,'style_specific',obj._meta.verbose_name_plural))
