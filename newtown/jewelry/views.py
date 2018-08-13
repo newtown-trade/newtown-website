@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from django.db.models import Max, Min
 from django.urls import reverse
 from .models import *
@@ -83,11 +83,13 @@ def style(request,jewelry_type,jewelry_style_user):
 	obj = class_parser(jewelry_type)
 	if obj is not None:
 		jewelry_queryset = obj.objects.filter(jewelry_style=jewelry_style_user)
-		return render(request,'jewelry/style_list.html',{'jewelry_queryset':jewelry_queryset,'jewelry_display_name':obj._meta.verbose_name,'jewelry_style_user':jewelry_style_user,'jewelry_type':jewelry_type})
+		if len(jewelry_queryset)>0:
+			return render(request,'jewelry/style_list.html',{'jewelry_queryset':jewelry_queryset,'jewelry_display_name':obj._meta.verbose_name,'jewelry_style_user':jewelry_style_user,'jewelry_type':jewelry_type})
 
 	#todo: insert generic template here
-	return HttpResponse('invalid')
+	raise Http404("Style does not Exist")
 
+#given a requested jewelry type AND its corresponding style, pulls (or fails to) pull an appropriate object from DB
 def style_specific(request, jewelry_type, jewelry_style_user,jewelry_id):
 
 	#parses out appropriate Model -- see class_parser.py
@@ -95,8 +97,12 @@ def style_specific(request, jewelry_type, jewelry_style_user,jewelry_id):
 	if obj is not None:
 		jewelry_item = get_object_or_404(obj,pk=jewelry_id,jewelry_style=jewelry_style_user)
 		return render(request,'jewelry/style_specific.html',{'jewelry_item':jewelry_item,'jewelry_type':jewelry_type,'jewelry_style_user':jewelry_style_user,'jewelry_display_name':obj._meta.verbose_name})
-	return HttpResponse('invalid')
+	return HttpResponse('Invalid Option')
 
+#A generalized search method that implements the new Dynamic URL Construction method
+#Invokes generate_context, but replaces get_specific_item with style_specific. (Mainly due to incompabilities with URL)
 def search(request,jewelry_type):
 	obj = class_parser(jewelry_type)
-	return render(request,'jewelry/jewelry_list.html',generate_context(obj._meta.get_fields(),obj.__name__,'style_specific',obj._meta.verbose_name_plural))
+	if obj is not None:
+		return render(request,'jewelry/jewelry_list.html',generate_context(obj._meta.get_fields(),obj.__name__,'style_specific',obj._meta.verbose_name_plural))
+	raise Http404("Style does not Exist")
