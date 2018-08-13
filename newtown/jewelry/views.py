@@ -100,9 +100,13 @@ def style_specific(request, jewelry_type, jewelry_style_user,jewelry_id):
 	return HttpResponse('Invalid Option')
 
 #A generalized search method that implements the new Dynamic URL Construction method
+#also doubles as subhome screen
 #Invokes generate_context, but replaces get_specific_item with style_specific. (Mainly due to incompabilities with URL)
 def search(request,jewelry_type):
 	obj = class_parser(jewelry_type)
+	styles=obj.objects.values_list('jewelry_style',flat=True)
 	if obj is not None:
-		return render(request,'jewelry/jewelry_list.html',generate_context(obj._meta.get_fields(),obj.__name__,'style_specific',obj._meta.verbose_name_plural))
+		context=generate_context(obj._meta.get_fields(),obj.__name__,'style_specific',obj._meta.verbose_name_plural)
+		context['styles']=styles
+		return render(request,'jewelry/jewelry_list.html',context)
 	raise Http404("Style does not Exist")

@@ -58,11 +58,12 @@ v0.6
 	-create new generic Jewelry model (e.g. price) and have existing modules link back to it as ForeignKey[REJECTED]
 	-adapt Algolia to work with new system[REJECTED]
 -Display each JEWELRY TYPE as a top header on the navbar, and each JEWELRY STYLE under JEWELRY TYPE as a suboption[DONE]
--write subhome pages for each JEWELRY TYPE that dynamically display existing jewelry styles
+-write subhome pages for each JEWELRY TYPE that dynamically display existing jewelry styles[DONE]
 integrate display into dynamic URL
--Write generalized field details for style_specific
+-Write generalized field details for style_specific[DONE, SEE ALGOLIA SUBPOINT]
 -Link UNIFORM Displays (i.e. of the same jewelry TYPE and STYLE) with Type/Style pages
 -Algolia system to remain (mostly) intact as secondary system on topheader havbar[DONE]
 	-find some way to integrate old method
+-overhaul the frontend
 -sitemap
 -item nubmer support

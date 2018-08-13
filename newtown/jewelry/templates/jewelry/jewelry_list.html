@@ -23,6 +23,15 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		</div>
 		<h3><a href="{% url 'jewelry:index' %}">Back to Jewelry</a></h3>
 
+		{# TODO: add styling to this #}
+		<div class = "row">
+			{% for style in styles %}
+				<div class = "col-md-4 text-center">
+					<p><a href = "{% url 'jewelry:style' jewelry_type=model_name jewelry_style_user=style %}">{{ style }}</a></p>
+				</div>
+			{% endfor %}
+		</div>
+
 		<div class = "row">
 			<div class = "col-md-3">
 				<div id="search-box" style = "margin-bottom:1rem;">
