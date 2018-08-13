@@ -46,7 +46,7 @@
 						{% for style in style_items.0 %}
 							<a class="dropdown-item" href="{% url 'jewelry:style' jewelry_type=style_items.1 jewelry_style_user=style %}">{{style}}</a>
 						{% endfor %}
-						{# TODO: add generalized search function #}
+						<a class = "dropdown-item" href = "{% url 'jewelry:search' jewelry_type=style_items.1 %}">{{jewelry_meta_name}} Search</a>
 					</div>
 				</li>
 				{% endfor %}
@@ -98,7 +98,7 @@
 							<div class = "list-group-item">{{ item }}</div>
 						{% endfor %}
 					</div>
-					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:metals' %}" class = "links">See More</a></h3>
+					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:search' jewelry_type='Metal' %}" class = "links">See More</a></h3>
 				</div>
 				<div class = "col-md-6">
 					<h2 class = "text-center header-colorin">Contact Lenses</h2>
@@ -108,7 +108,7 @@
 							<div class = "list-group-item">{{ item }}</div>
 						{% endfor %}
 					</div>
-					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:contactLense' %}" class = "links">See More</a></h3>
+					<h3 class = "text-center" style = "padding:1rem"><a href = "{% url 'jewelry:search' jewelry_type='ContactLense'%}" class = "links">See More</a></h3>
 				</div>
 			</div>
 			<!-- TODO: add photo gallery here or something -->

@@ -55,6 +55,7 @@ def get_specific_item(specific_item, url_to_full_list):
 def index(request):
 	return render(request,'jewelry/jewelry_root.html',{})
 
+'''
 def metals(request):
 	return render(request,'jewelry/metal.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific',Metal._meta.verbose_name_plural))
 	#return render(request, 'jewelry/jewelry_list.html',{'metal_url_specific':metal_specific_url,'model_name':model_name,'attributes':attributes}) 
@@ -66,6 +67,7 @@ def contactLense(request):
 	return render(request,'jewelry/contactLense.html',generate_context(ContactLense._meta.get_fields(),ContactLense.__name__,'contactLenseSpecific',ContactLense._meta.verbose_name_plural))
 def contactLenseSpecific(request,contactLense_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(ContactLense,pk=contactLense_id),reverse('jewelry:contactLense')))
+'''
 
 def display(request):
 	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific',Display._meta.verbose_name_plural))
