@@ -8,7 +8,7 @@ from .class_parser import *
 #need to write generic view for specific metals and for specific materials
 
 #given a Model's raw get_field result, its name par apps.py, its specific method, and the display name from the admin, returns the required context
-def generate_context(get_field_result,model_name,specific_method,display_name):
+def generate_context(get_field_result,model_name,specific_method,display_name,replace_parameters):
 
 	#parses out and obtains field types
 	attributes = {}
@@ -16,8 +16,16 @@ def generate_context(get_field_result,model_name,specific_method,display_name):
 		if i.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField','DateTimeField']:
 			attributes[i.name]=[i.verbose_name,str(i.get_internal_type())]
 
-	#generates the item-specific urls
-	specific_url = (reverse('jewelry:'+specific_method,args=[model_name,177013,1337]).replace('1337','{{objectID}}')).replace('177013','{{jewelry_style}}')
+	#generates the item-specific urls and removes placeholders par replace_parameters
+	if isinstance(list(replace_parameters.keys()),list):
+		print(list(replace_parameters.keys()))
+	else:
+		print("not a list")
+	#specific_url = reverse('jewelry:'+specific_method,args=list(replace_parameters.keys()))
+	specific_url=reverse('jewelry:'+specific_method,kwargs=replace_parameters)
+	for key, value in replace_parameters.items():
+		specific_url=specific_url.replace(key,value)
+	#specific_url = (reverse('jewelry:'+specific_method,args=[model_name,177013,1337]).replace('1337','{{objectID}}')).replace('177013','{{jewelry_style}}')
 	print(specific_url)
 
 	#returns the context to be fed into the view
@@ -55,22 +63,8 @@ def get_specific_item(specific_item, url_to_full_list):
 def index(request):
 	return render(request,'jewelry/jewelry_root.html',{})
 
-'''
-def metals(request):
-	return render(request,'jewelry/metal.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific',Metal._meta.verbose_name_plural))
-	#return render(request, 'jewelry/jewelry_list.html',{'metal_url_specific':metal_specific_url,'model_name':model_name,'attributes':attributes}) 
-
-def metal_specific(request,metal_id):
-	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Metal,pk=metal_id),reverse('jewelry:metals'))) #see comments for get_specific_item
-
-def contactLense(request):
-	return render(request,'jewelry/contactLense.html',generate_context(ContactLense._meta.get_fields(),ContactLense.__name__,'contactLenseSpecific',ContactLense._meta.verbose_name_plural))
-def contactLenseSpecific(request,contactLense_id):
-	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(ContactLense,pk=contactLense_id),reverse('jewelry:contactLense')))
-'''
-
 def display(request):
-	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific',Display._meta.verbose_name_plural))
+	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific',Display._meta.verbose_name_plural,{'1337':'{{objectID}}'}))
 def displaySpecific(request,display_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Display,pk=display_id),reverse('jewelry:display')))
 
@@ -103,10 +97,26 @@ def style_specific(request, jewelry_type, jewelry_style_user,jewelry_id):
 #also doubles as subhome screen
 #Invokes generate_context, but replaces get_specific_item with style_specific. (Mainly due to incompabilities with URL)
 def search(request,jewelry_type):
+	print(jewelry_type)
 	obj = class_parser(jewelry_type)
-	styles=obj.objects.values_list('jewelry_style',flat=True)
 	if obj is not None:
-		context=generate_context(obj._meta.get_fields(),obj.__name__,'style_specific',obj._meta.verbose_name_plural)
+		styles=obj.objects.values_list('jewelry_style',flat=True)
+		context=generate_context(obj._meta.get_fields(),obj.__name__,'style_specific',obj._meta.verbose_name_plural,{'jewelry_type':obj.__name__,'jewelry_style_user':'{{ jewelry_style }}','jewelry_id':'{{objectID}}'})
 		context['styles']=styles
 		return render(request,'jewelry/jewelry_list.html',context)
 	raise Http404("Style does not Exist")
+
+'''
+def metals(request):
+	return render(request,'jewelry/metal.html',generate_context(Metal._meta.get_fields(),Metal.__name__,'metal_specific',Metal._meta.verbose_name_plural))
+	#return render(request, 'jewelry/jewelry_list.html',{'metal_url_specific':metal_specific_url,'model_name':model_name,'attributes':attributes}) 
+
+def metal_specific(request,metal_id):
+	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Metal,pk=metal_id),reverse('jewelry:metals'))) #see comments for get_specific_item
+
+def contactLense(request):
+	return render(request,'jewelry/contactLense.html',generate_context(ContactLense._meta.get_fields(),ContactLense.__name__,'contactLenseSpecific',ContactLense._meta.verbose_name_plural))
+def contactLenseSpecific(request,contactLense_id):
+	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(ContactLense,pk=contactLense_id),reverse('jewelry:contactLense')))
+'''
+
