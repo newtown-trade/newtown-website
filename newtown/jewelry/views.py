@@ -36,6 +36,7 @@ def generate_context(get_field_result,model_name,specific_method,display_name,re
 #WARNING: code will change if multiple images
 #given a specific item requested via pk and a url back to the full list, dynamically generates a profile for item and returns context
 #url_to_full_list (i.e. the link back to object type's list (e.g. metals) is generated here to abstract it from the template
+#the only class that implements this technqiue is Display
 def get_specific_item(specific_item, url_to_full_list):
 
 	#grabs the object's fields and values
@@ -62,8 +63,11 @@ def get_specific_item(specific_item, url_to_full_list):
 	#return context to be fed back to view
 	return attributes
 
+#view functions for Display
+#NOTE: because Display doesn't have jewelry_style, cannot use style/style_specific generalized methods
+
 def display(request):
-	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific',Display._meta.verbose_name_plural,{'1337':'{{objectID}}'}))
+	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific',Display._meta.verbose_name_plural,{'display':'display','1337':'{{objectID}}'}))
 def displaySpecific(request,display_id):
 	return render(request,'jewelry/jewelry_specific.html',get_specific_item(get_object_or_404(Display,pk=display_id),reverse('jewelry:display')))
 

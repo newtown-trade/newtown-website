@@ -78,9 +78,11 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		<div class = "col-sm-6 text-middle my-auto">
 			{% comment %}<h2><a href = "{{specific_url}}">{% block hit_header %} {% endblock %}</a></h2>
 			{% block hit_details %}{% endblock %}{% endcomment %}
-			<h2><a href = "{{specific_url}}">{% verbatim %}{{{_highlightResult.jewelry_style.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}</a></h2>
+			<h2><a href = "{{specific_url}}">{% block hit_header %}{% verbatim %}{{{_highlightResult.jewelry_style.value}}} {{{_highlightResult.jewelry_type.value}}}{% endverbatim %}{% endblock %}</a></h2>
+			{% block hit_details %}
 			<p>Size: {% verbatim %}{{size}} mm.{% endverbatim %}</p>
 			<p>Price: ${% verbatim %}{{price}}{% endverbatim %}</p>
+			{% endblock %}
 		</div>
 	</div>
 </script>
