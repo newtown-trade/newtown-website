@@ -15,6 +15,6 @@ urlpatterns = [#need to write generic view for specific metals and for specific 
 	#url(r'^steel/$',views.steel, name='steel'),
 	url(r'^(?P<jewelry_type>[A-Za-z0-9]+)/$',views.search,name="search"),
 	url(r'^(?P<jewelry_type>[A-Za-z0-9]+)/(?P<jewelry_style_user>[A-Za-z0-9]+)/$',views.style,name="style"),
-	url(r'^(?P<jewelry_type>[A-Za-z0-9_-]+)/(?P<jewelry_style_user>[A-Za-z0-9_-]+)/(?P<jewelry_id>[0-9_-]+)/$',views.style_specific,name="style_specific"),	
+	url(r'^(?P<jewelry_type>[A-Za-z0-9_-]+)/(?P<jewelry_style_user>[A-Za-z0-9_{}]+)/(?P<jewelry_id>[A-Za-z0-9_{}]+)/$',views.style_specific,name="style_specific"),	
 
 ]

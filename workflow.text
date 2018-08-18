@@ -61,7 +61,7 @@ v0.6
 -write subhome pages for each JEWELRY TYPE that dynamically display existing jewelry styles[DONE]
 integrate display into dynamic URL
 -display:
-	-envelop display under dynamic URL solution
+	-envelop display under dynamic URL solution [DONE]
 	-Link UNIFORM Displays (i.e. of the same jewelry TYPE and STYLE) with Type/Style pages
 -Write generalized field details for style_specific[DONE, SEE ALGOLIA SUBPOINT]
 -Algolia system to remain (mostly) intact as secondary system on topheader havbar[DONE]

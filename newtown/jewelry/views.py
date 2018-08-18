@@ -5,7 +5,10 @@ from django.urls import reverse
 from .models import *
 from .class_parser import *
 
-#need to write generic view for specific metals and for specific materials
+
+#returns root directory for jewelry app
+def index(request):
+	return render(request,'jewelry/jewelry_root.html',{})
 
 #given a Model's raw get_field result, its name par apps.py, its specific method, and the display name from the admin, returns the required context
 def generate_context(get_field_result,model_name,specific_method,display_name,replace_parameters):
@@ -16,17 +19,16 @@ def generate_context(get_field_result,model_name,specific_method,display_name,re
 		if i.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField','DateTimeField']:
 			attributes[i.name]=[i.verbose_name,str(i.get_internal_type())]
 
-	#generates the item-specific urls and removes placeholders par replace_parameters
-	if isinstance(list(replace_parameters.keys()),list):
-		print(list(replace_parameters.keys()))
-	else:
-		print("not a list")
 	#specific_url = reverse('jewelry:'+specific_method,args=list(replace_parameters.keys()))
-	specific_url=reverse('jewelry:'+specific_method,kwargs=replace_parameters)
-	for key, value in replace_parameters.items():
-		specific_url=specific_url.replace(key,value)
+	#specific_url=reverse('jewelry:'+specific_method,kwargs=replace_parameters)
 	#specific_url = (reverse('jewelry:'+specific_method,args=[model_name,177013,1337]).replace('1337','{{objectID}}')).replace('177013','{{jewelry_style}}')
-	print(specific_url)
+
+	#generates template for specific jewelry that algolia later uses
+	#due to problems with reverse(), link is handmade.
+	specific_url = '/jewelry'
+	for key, value in replace_parameters.items():
+		specific_url = specific_url + '/' + key
+		specific_url=specific_url.replace(key,value)
 
 	#returns the context to be fed into the view
 	return {'specific_url':specific_url,'model_name':model_name,'attributes':attributes, 'display_name':display_name}
@@ -59,9 +61,6 @@ def get_specific_item(specific_item, url_to_full_list):
 		attributes['image_url']=image_url
 	#return context to be fed back to view
 	return attributes
-
-def index(request):
-	return render(request,'jewelry/jewelry_root.html',{})
 
 def display(request):
 	return render(request,'jewelry/display.html',generate_context(Display._meta.get_fields(),Display.__name__,'displaySpecific',Display._meta.verbose_name_plural,{'1337':'{{objectID}}'}))

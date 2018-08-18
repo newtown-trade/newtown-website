@@ -61,7 +61,7 @@ class Metal(models.Model):
 class Display(models.Model):
 	name=models.CharField(max_length=50,default="name",verbose_name="Name of Display")
 	jewelryset = models.ManyToManyField(Metal,verbose_name="Jewelry in Display")
-	full_price = models.IntegerField(default=0,verbose_name="Price of Entire Display")
+	full_price = models.DecimalField(decimal_places=2,max_digits=6,default=0,verbose_name="Price of Entire Display")
 	length=models.IntegerField(default=0,verbose_name="Length of Board (mm.)")
 	width=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Width of Board (mm.)")
 	image = models.ImageField(upload_to='display/', null=True, verbose_name = "Image of Display") #TODO: create specialized folders for display after input from dad
