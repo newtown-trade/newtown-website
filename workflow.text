@@ -62,8 +62,8 @@ v0.6
 integrate display into dynamic URL
 -display:
 	-envelop display under dynamic URL solution [DONE]
-	-Link UNIFORM Displays (i.e. of the same jewelry TYPE and STYLE) with Type/Style pages
-	-make contents of display searchable
+	-Link UNIFORM Displays (i.e. of the same jewelry TYPE and STYLE) with Type/Style pages [POSTPONED]
+	-make contents of display searchable 
 -Write generalized field details for style_specific[DONE, SEE ALGOLIA SUBPOINT]
 -Algolia system to remain (mostly) intact as secondary system on topheader havbar[DONE]
 	-find some way to integrate old method [DONE][SEE DISPLAY DB CLASS]

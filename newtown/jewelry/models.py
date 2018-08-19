@@ -86,12 +86,12 @@ class Display(models.Model):
 
 	#ADD A MANYTOMANYFIELD FOR EACH NEW JEWELRY MODEL, follow convention "{{metalCase}}_set"
 	#also be sure to add the ManyToManyField to the filter_horizontal option in admin.py
-	metal_set = models.ManyToManyField(Metal,verbose_name=Metal._meta.verbose_name_plural + " In Display")
-	contactLense_set = models.ManyToManyField(ContactLense,verbose_name=ContactLense._meta.verbose_name_plural + " In Display")
+	metal_set = models.ManyToManyField(Metal,verbose_name=Metal._meta.verbose_name_plural + " In Display",blank=True)
+	contactLense_set = models.ManyToManyField(ContactLense,verbose_name=ContactLense._meta.verbose_name_plural + " In Display",blank=True)
 
 	full_price = models.DecimalField(decimal_places=2,max_digits=6,default=0,verbose_name="Price of Entire Display")
 	length=models.IntegerField(default=0,verbose_name="Length of Board (mm.)")
-	width=models.DecimalField(max_digits=6,decimal_places=2,default=0,verbose_name="Width of Board (mm.)")
+	width=models.IntegerField(default=0,verbose_name="Width of Board (mm.)")
 	image = models.ImageField(upload_to='display/', null=True, verbose_name = "Image of Display") #TODO: create specialized folders for display after input from dad
 	timestamp = models.DateTimeField(default=timezone.now)
 

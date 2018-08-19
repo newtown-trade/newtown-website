@@ -98,6 +98,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		urlSync: true
 	});
 
+
 	function newRefinementList(field_name,verbose_name){ //assigns field_name to container and header, verobse_name to header, corresponds to category-type search
 		search.addWidget(
 			instantsearch.widgets.refinementList({
@@ -143,6 +144,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 			})
 		);	
 	}
+
 
 	//process and generates the proper parameters depending on field
 	//TODO: find better performance alternative
@@ -194,7 +196,7 @@ MOVE METAL-SPECIFIC WIDGETS TO GENERALIZED JEWELRY DEISGN
 		instantsearch.widgets.hits({
 			container:'#hits',
 			templates:{
-				empty:'Mo Results',
+				empty:'No Results',
 				//PROBLEM: size and price are not searchable
 				item:document.getElementById('hit-template').innerHTML
 			}	
