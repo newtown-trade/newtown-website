@@ -5,9 +5,9 @@
 from algoliasearch_django import AlgoliaIndex
 
 '''
-from class_parser import *
+from .class_parser import *
 
-def get_parameters(classname):
+def getParameters(classname):
 	obj = class_parser(classname)
 	parameters = []
 	for param in obj._meta.get_fields():
