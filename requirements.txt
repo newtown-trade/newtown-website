@@ -2,7 +2,7 @@ algoliasearch==1.15.3
 algoliasearch-django==1.5.6
 certifi==2017.4.17
 chardet==3.0.4
-Django==1.11.11
+Django==2.1
 django-bootstrap3==8.2.3
 django-bootstrap4==0.0.6
 django-ckeditor==5.3.0
