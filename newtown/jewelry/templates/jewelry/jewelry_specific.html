@@ -2,10 +2,12 @@
 {% load static %}
 {% block titlehead %}{{specific_item}}{% endblock %}
 
+{# The only Model that uses this template currently is Display, because of the jewelry_style restriction. #}
+
 {% block body_nocontainer %}
 	<div class = "container">
 		<div class = "jumbotron header-colorin-bigger"><h1>{{specific_item}}</h1></div>
-		<h3 class = "pb-1"><a href = "{{url_to_full_list}}">Back to List</a></h3>
+		<h3 class = "pb-1"><a role = button class = "btn btn-outline-primary" href = "{{url_to_full_list}}">Back to Jewelry List</a></h3>
 		<div class = "row">
 			<div class = "col-md-6 text-center">
 				{% if image_url %}
