@@ -4,19 +4,8 @@
 
 from algoliasearch_django import AlgoliaIndex
 
-'''
-from .class_parser import *
-
-def getParameters(classname):
-	obj = class_parser(classname)
-	parameters = []
-	for param in obj._meta.get_fields():
-		if param.get_internal_type() not in ['ManyToManyField','AutoField','FileField','ImageField','DateTimeField']:
-			parameters.append(param)
-	return param
-
-print(get_parameters('Metal'))
-'''
+#uncommenting this line causes an App RegistryNotReady error
+#from .class_parser import *
 
 class MetalIndex(AlgoliaIndex):
 	parameters = ['jewelry_type','price','size','jewelry_style']

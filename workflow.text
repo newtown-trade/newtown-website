@@ -67,7 +67,7 @@ integrate display into dynamic URL
 -Write generalized field details for style_specific[DONE, SEE ALGOLIA SUBPOINT]
 -Algolia system to remain (mostly) intact as secondary system on topheader havbar[DONE]
 	-find some way to integrate old method [DONE][SEE DISPLAY DB CLASS]
--make adding of indexes in indexes.py automatic
+-make adding of indexes in indexes.py automatic [POSTPONED]
 -overhaul the frontend
 -sitemap
 -COMMENTS & add specific maintainence instructions on README
