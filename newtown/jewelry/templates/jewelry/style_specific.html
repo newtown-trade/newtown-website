@@ -1,13 +1,24 @@
 {% extends 'newtown/home.html' %}
 {% load static %}
 
-{% block titlehead %}{{ jewelry_item }}{% endblock %}
+{% block titlehead %}{{ specific_item }}{% endblock %}
 
 {% block body_nocontainer %}
 	<div class = "container">
-		<div class = "jumbotron header-colorin-bigger"><h1>{{ jewelry_item }}</h1></div>	
-		<h3 class = "pb-1"><a href = "{% url 'jewelry:style' jewelry_type=jewelry_type jewelry_style_user=jewelry_style_user  %}">Back to {{jewelry_style_user}} under {{ jewelry_display_name }}</a></h3>
-		<h3><a href = "{% url 'jewelry:search' jewelry_type=jewelry_type %}">Back to {{ jewelry_type }} Search</a></h3>
+		<div class = "jumbotron header-colorin-bigger"><h1>{{ specific_item }}</h1></div>	
+		<h3 class = "pb-1"><a role= "button" class = "btn btn-outline-primary" href = "{% url 'jewelry:style' jewelry_type=jewelry_type jewelry_style_user=jewelry_style_user  %}">Back to {{jewelry_style_user}} under {{ jewelry_display_name }}</a></h3>
+		<h3><a role = "button" class = "btn btn-outline-secondary" href = "{% url 'jewelry:search' jewelry_type=jewelry_type %}">Back to {{ jewelry_display_name }} Search</a></h3>
+		<div class = "row text-center mt-4">
+			<div class = "col-md-6">
+				<img src = "{{ specific_item.image.url }}" class = "img-fluid">
+			</div>
+			<div class = "col-md-6 text-left">
+				<h1>{{ specific_item }}</h1>
+				{% for key,values in item_attributes.items %}
+					<h2><b>{{key}}</b>: {{values}}</h2>
+				{% endfor %}
+			</div>
+		</div>
 	</div>	
 {% endblock %}
 

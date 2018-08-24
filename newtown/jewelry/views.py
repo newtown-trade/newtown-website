@@ -91,10 +91,17 @@ def style_specific(request, jewelry_type, jewelry_style_user,jewelry_id):
 
 	#parses out appropriate Model -- see class_parser.py
 	obj = class_parser(jewelry_type)
+
+	#assuming object is not one, generates context using get_specific_item, creates in-house context, and returns meshed together option
 	if obj is not None:
 		jewelry_item = get_object_or_404(obj,pk=jewelry_id,jewelry_style=jewelry_style_user)
-		return render(request,'jewelry/style_specific.html',{'jewelry_item':jewelry_item,'jewelry_type':jewelry_type,'jewelry_style_user':jewelry_style_user,'jewelry_display_name':obj._meta.verbose_name})
-	return HttpResponse('Invalid Option')
+		context_from_method = get_specific_item(jewelry_item,'')
+		context_inhouse={'jewelry_type':jewelry_type,'jewelry_style_user':jewelry_style_user,'jewelry_display_name':obj._meta.verbose_name}
+		context = {**context_from_method,**context_inhouse}
+		return render(request,'jewelry/style_specific.html',context)
+
+	#error 404
+	return Http404('Item Does Not Exist')
 
 #A generalized search method that implements the new Dynamic URL Construction method
 #also doubles as subhome screen
